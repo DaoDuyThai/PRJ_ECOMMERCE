@@ -1951,7 +1951,7 @@ textarea.input {
 }
 
 .newsletter form .input {
-  width: calc(100% - 160px);
+  width: 100%;
   margin-right: -4px;
   border-radius: 40px 0px 0px 40px;
 }
@@ -1969,6 +1969,17 @@ textarea.input {
   color: #FFF;
   border: none;
   border-radius: 0px 40px 40px 0px;
+}
+
+.newsletter form .label-auth {
+  text-align: start;
+  justify-content: start;
+  margin-top: 20px;
+}
+
+.newsletter form .forgot-password{
+  width: 100%;
+  justify-content: end; text-align: end;
 }
 
 .newsletter form .input-auth-btn {
