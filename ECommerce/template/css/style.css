@@ -1956,6 +1956,11 @@ textarea.input {
   border-radius: 40px 0px 0px 40px;
 }
 
+.newsletter form .input-auth {
+  border-radius: 40px 40px 40px 40px;
+  margin: 5px 0px;
+}
+
 .newsletter form .newsletter-btn {
   width: 160px;
   height: 40px;
@@ -1964,6 +1969,10 @@ textarea.input {
   color: #FFF;
   border: none;
   border-radius: 0px 40px 40px 0px;
+}
+
+.newsletter form .input-auth-btn {
+  border-radius: 40px 40px 40px 40px;
 }
 
 .newsletter .newsletter-follow {
