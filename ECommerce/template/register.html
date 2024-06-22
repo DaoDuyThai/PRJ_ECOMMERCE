@@ -28,6 +28,9 @@
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 
+	<!-- Cloudinary -->
+	<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -199,23 +202,36 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="newsletter">
-						<p><strong>SIGN UP</strong></p>
+						<p><strong>REGISTER</strong></p>
 						<form>
 							<div class="row">
 								<div class="label-auth">
-									<b>Username&nbsp;&nbsp;</b>
+									<b>Email</b>
 								</div>
 							</div>
 							<div class="row">
-								<input class="input input-auth" type="username" placeholder="Enter Your Username">
+								<input class="input input-auth" type="email" placeholder="Enter Your Email">
 							</div>
 							<div class="row">
 								<div class="label-auth">
-									<b>Password&nbsp;&nbsp;</b>
+									<b>Password</b>
 								</div>
 							</div>
 							<div class="row">
 								<input class="input input-auth" type="password" placeholder="Enter Your Password">
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>Fullname</b>
+								</div>
+							</div>
+							<div class="row">
+								<input class="input input-auth" type="text" placeholder="Enter Your Fullname">
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>Avatar</b>
+								</div>
 							</div>
 							<br />
 							<button class="newsletter-btn input-auth-btn">Register</button>
@@ -223,7 +239,7 @@
 							<br />
 							<br />
 							<div class="row">Already have an account?
-								<a style="cursor: pointer;">
+								<a href="login.html" style="cursor: pointer;">
 									Login here.
 								</a>
 							</div>
