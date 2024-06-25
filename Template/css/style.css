@@ -1977,6 +1977,13 @@ textarea.input {
   margin-top: 20px;
 }
 
+.newsletter form .error-message {
+  text-align: start;
+  justify-content: start;
+  font-size: 12px;
+  color: red;
+}
+
 .newsletter form .forgot-password{
   width: 100%;
   justify-content: end; text-align: end;
