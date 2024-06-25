@@ -28,12 +28,15 @@
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 
+	<!-- Cloudinary -->
+	<script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
@@ -191,236 +194,70 @@
 	</nav>
 	<!-- /NAVIGATION -->
 
-	<!-- SECTION -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<!-- ASIDE -->
-				<div id="aside" class="col-md-3">
-					<!-- aside Widget -->
-					<div class="aside">
-						<h3 class="aside-title">Categories</h3>
-						<div class="checkbox-filter">
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-1">
-								<label for="category-1">
-									<span></span>
-									Laptops
-									<small>(120)</small>
-								</label>
-							</div>
-						</div>
-					</div>
-					<!-- /aside Widget -->
-
-					<!-- aside Widget -->
-					<div class="aside">
-						<h3 class="aside-title">Price</h3>
-						<div class="price-filter">
-							<div id="price-slider"></div>
-							<div class="input-number price-min">
-								<input id="price-min" type="number">
-								<span class="qty-up">+</span>
-								<span class="qty-down">-</span>
-							</div>
-							<span>-</span>
-							<div class="input-number price-max">
-								<input id="price-max" type="number">
-								<span class="qty-up">+</span>
-								<span class="qty-down">-</span>
-							</div>
-						</div>
-					</div>
-					<!-- /aside Widget -->
-
-					<!-- aside Widget -->
-					<div class="aside">
-						<h3 class="aside-title">Brand</h3>
-						<div class="checkbox-filter">
-							<div class="input-checkbox">
-								<input type="checkbox" id="brand-1">
-								<label for="brand-1">
-									<span></span>
-									SAMSUNG
-									<small>(578)</small>
-								</label>
-							</div>
-							<div class="input-checkbox">
-								<input type="checkbox" id="brand-2">
-								<label for="brand-2">
-									<span></span>
-									LG
-									<small>(125)</small>
-								</label>
-							</div>
-							<div class="input-checkbox">
-								<input type="checkbox" id="brand-3">
-								<label for="brand-3">
-									<span></span>
-									SONY
-									<small>(755)</small>
-								</label>
-							</div>
-							<div class="input-checkbox">
-								<input type="checkbox" id="brand-4">
-								<label for="brand-4">
-									<span></span>
-									SAMSUNG
-									<small>(578)</small>
-								</label>
-							</div>
-							<div class="input-checkbox">
-								<input type="checkbox" id="brand-5">
-								<label for="brand-5">
-									<span></span>
-									LG
-									<small>(125)</small>
-								</label>
-							</div>
-							<div class="input-checkbox">
-								<input type="checkbox" id="brand-6">
-								<label for="brand-6">
-									<span></span>
-									SONY
-									<small>(755)</small>
-								</label>
-							</div>
-						</div>
-					</div>
-					<!-- /aside Widget -->
-
-					<!-- aside Widget -->
-					<div class="aside">
-						<h3 class="aside-title">Top selling</h3>
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product01.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product02.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-					</div>
-					<!-- /aside Widget -->
-				</div>
-				<!-- /ASIDE -->
-
-				<!-- STORE -->
-				<div id="store" class="col-md-9">
-					<!-- store top filter -->
-					<div class="store-filter clearfix">
-						<div class="store-sort">
-							<label>
-								Sort By:
-								<select class="input-select">
-									<option value="0">Popular</option>
-									<option value="1">Position</option>
-								</select>
-							</label>
-
-							<label>
-								Show:
-								<select class="input-select">
-									<option value="0">20</option>
-									<option value="1">50</option>
-								</select>
-							</label>
-						</div>
-						<ul class="store-grid">
-							<li class="active"><i class="fa fa-th"></i></li>
-							<li><a href="#"><i class="fa fa-th-list"></i></a></li>
-						</ul>
-					</div>
-					<!-- /store top filter -->
-
-					<!-- store products -->
-					<div class="row">
-						<!-- product -->
-						<div class="col-md-4 col-xs-6">
-							<div class="product">
-								<div class="product-img">
-									<img src="./img/product01.png" alt="">
-									<div class="product-label">
-										<span class="sale">-30%</span>
-										<span class="new">NEW</span>
-									</div>
-								</div>
-								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">product name goes here</a></h3>
-									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								</div>
-								<div class="add-to-cart">
-									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
-										cart</button>
-								</div>
-							</div>
-						</div>
-						<!-- /product -->
-
-
-					</div>
-					<!-- /store products -->
-
-					<!-- store bottom filter -->
-					<div class="store-filter clearfix">
-						<span class="store-qty">Showing 20-100 products</span>
-						<ul class="store-pagination">
-							<li class="active">1</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-						</ul>
-					</div>
-					<!-- /store bottom filter -->
-				</div>
-				<!-- /STORE -->
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /SECTION -->
-
 	<!-- NEWSLETTER -->
-	<div id="newsletter" class="section">
+	<div id="" class="section">
 		<!-- container -->
 		<div class="container">
 			<!-- row -->
 			<div class="row">
 				<div class="col-md-12">
 					<div class="newsletter">
-						<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+						<p><strong>UPDATE PROFILE</strong></p>
 						<form>
-							<input class="input" type="email" placeholder="Enter Your Email">
-							<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							<div class="row">
+								<div class="label-auth">
+									<b>Email</b>
+								</div>
+							</div>
+							<div class="row">
+								<input id="email" name="email" class="input input-auth" type="email"
+									placeholder="Enter Your Email" readonly>
+
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>Old Password</b>
+								</div>
+							</div>
+							<div class="row">
+								<input id="old-password" name="old-password" class="input input-auth" type="password"
+									placeholder="Enter Your Old Password" required>
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>New Password</b>
+								</div>
+							</div>
+							<div class="row">
+								<input id="new-password" name="new-password" class="input input-auth" type="password"
+									placeholder="Enter Your New Password" required>
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>Fullname</b>
+								</div>
+							</div>
+							<div class="row">
+								<input id="fullname" name="fullname" class="input input-auth" type="text"
+									placeholder="Enter Your Fullname" required>
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>Avatar</b>
+								</div>
+							</div>
+							<div class="row">
+								<button type="button" id="upload_widget" class="cloudinary-button"
+									style="background-color: #D10024; border: 0px;">Upload files</button>
+								<img id="avatar-thumbnail" width="200px" height="200px" />
+							</div>
+							<div class="error-message">
+								<b>*Error Message</b>
+							</div>
+							<br />
+							<input id="image-url" name="image-url" class="input input-auth" type="text"
+								placeholder="Image URL" style="display: none;">
+							<button type="submit" class="newsletter-btn input-auth-btn">UPDATE</button>
 						</form>
 						<ul class="newsletter-follow">
 							<li>
@@ -433,7 +270,7 @@
 								<a href="https://www.instagram.com/dduy_thai/"><i class="fa fa-instagram"></i></a>
 							</li>
 							<li>
-								<a href="https://www.youtube.com/@codewithdt"><i class="fa fa-youtube"></i></a>
+								<a href="https://www.youtube.com/@codewithdt"><i class="fa fa-youtube-play"></i></a>
 							</li>
 						</ul>
 					</div>
@@ -510,6 +347,31 @@
 	<script src="js/nouislider.min.js"></script>
 	<script src="js/jquery.zoom.min.js"></script>
 	<script src="js/main.js"></script>
+
+	<!-- Cloudinary -->
+	<script type="text/javascript">
+		var myWidget = cloudinary.createUploadWidget({
+			cloudName: 'dmqd2y3mp',
+			uploadPreset: 'square_2MB',
+			cropping: true, //add a cropping step
+			showSkipCropButton: false, //don't show the skip crop button
+			croppingAspectRatio: 1, //crop the image to a 1:1 aspect ratio
+			sources: ["local", "url"], // restrict the upload sources to URL and local files
+			multiple: false, //restrict upload to a single file
+			folder: "PRJ_ECOMMERCE", //upload files to the specified folder
+			resourceType: "image", //specify the resource type to upload
+		}, (error, result) => {
+			if (!error && result && result.event === "success") {
+				console.log('Done! Here is the image info: ', result.info);
+				document.querySelector('#avatar-thumbnail').src = result.info.secure_url;
+				document.querySelector('#image-url').value = result.info.secure_url;
+			}
+		})
+
+		document.getElementById("upload_widget").addEventListener("click", function () {
+			myWidget.open();
+		}, false);
+	</script>
 
 </body>
 
