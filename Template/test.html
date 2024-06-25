@@ -10,6 +10,9 @@
 <body>
     <button id="upload_widget" class="cloudinary-button">Upload files</button>
     <img id="avatar-thumpnail" width="200px" height="200px"/>
+    
+    <p id="avatar_url"></p>
+    
 
     <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
 
@@ -25,6 +28,7 @@
             sources: [ "local", "url"], // restrict the upload sources to URL and local files
             multiple: false,  //restrict upload to a single file
             folder: "PRJ_ECOMMERCE", //upload files to the specified folder
+            resourceType: "image", //specify the resource type to upload
             // tags: ["users", "profile"], //add the given tags to the uploaded files
             // context: {alt: "user_uploaded"}, //add the given context data to the uploaded files
             //clientAllowedFormats: ["images/*"], //restrict uploading to image files only
@@ -35,6 +39,7 @@
             if (!error && result && result.event === "success") {
                 console.log('Done! Here is the image info: ', result.info);
                 document.querySelector('#avatar-thumpnail').src = result.info.secure_url;
+                document.querySelector('#avatar_url').textContent = result.info.secure_url;
             }
         }
         )
