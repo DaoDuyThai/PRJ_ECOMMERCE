@@ -103,27 +103,7 @@
 	/////////////////////////////////////////
 
 	// Input number
-	$('.input-number').each(function () {
-		var $this = $(this),
-			$input = $this.find('input[type="number"]'),
-			up = $this.find('.qty-up'),
-			down = $this.find('.qty-down');
-
-		down.on('click', function () {
-			var value = parseInt($input.val()) - 1;
-			value = value < 1 ? 1 : value;
-			$input.val(value);
-			$input.change();
-			updatePriceSlider($this, value)
-		})
-
-		up.on('click', function () {
-			var value = parseInt($input.val()) + 1;
-			$input.val(value);
-			$input.change();
-			updatePriceSlider($this, value)
-		})
-	});
+	
 
 	var priceInputMax = document.getElementById('price-max'),
 		priceInputMin = document.getElementById('price-min');
@@ -138,38 +118,33 @@
 
 	function updatePriceSlider(elem, value) {
 		if (elem.hasClass('price-min')) {
-			console.log('min')
 			priceSlider.noUiSlider.set([value, null]);
 		} else if (elem.hasClass('price-max')) {
-			console.log('max')
 			priceSlider.noUiSlider.set([null, value]);
 		}
 	}
 
-
-	// Function to format number to VND format
-	function formatToVND(value) {
-		// Format to VND with comma separator for thousands and 'đ' at the end
-		return value.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "đ";
-	}
-
-	// Function to parse VND format back to number
-	function parseFromVND(value) {
-		// Remove 'đ' and commas, then parse as integer
-		return parseInt(value.replace(/[đ,]/g, ""));
-	}
+	var formatForSlider = {
+		from: function (formattedValue) {
+			return Number(formattedValue);
+		},
+		to: function (numericValue) {
+			return Math.round(numericValue);
+		}
+	};
 
 	// Price Slider
 	var priceSlider = document.getElementById('price-slider');
 	if (priceSlider) {
 		noUiSlider.create(priceSlider, {
-			start: [1000000, 5000000], // Example start values in VND
-        connect: true,
-        step: 100000, // Example step in VND
-        range: {
-            'min': 1000000, // Example min value in VND
-            'max': 10000000 // Example max value in VND
-        },
+			start: [1000000, 10000000],
+			connect: true,
+			step: 100000,
+			range: {
+				'min': 1000000,
+				'max': 10000000
+			},
+			format: formatForSlider,
 		});
 
 
