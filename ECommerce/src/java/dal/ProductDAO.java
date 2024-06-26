@@ -53,5 +53,26 @@ public class ProductDAO {
             System.out.println(p.toString());
         }
     }
+    
+    String a = "-- Get the top 6 most bought laptops\n" +
+"SELECT TOP 6 \n" +
+"    P.id,\n" +
+"    P.[name],\n" +
+"    P.[description],\n" +
+"    P.image_url,\n" +
+"    P.price,\n" +
+"    SUM(OD.quantity) AS total_bought\n" +
+"FROM \n" +
+"    Products P\n" +
+"JOIN \n" +
+"    Categories C ON P.category_id = C.id\n" +
+"JOIN \n" +
+"    Order_details OD ON P.id = OD.product_id\n" +
+"WHERE \n" +
+"    C.[name] = 'Laptop'\n" +
+"GROUP BY \n" +
+"    P.id, P.[name], P.[description], P.image_url, P.price\n" +
+"ORDER BY \n" +
+"    total_bought DESC;";
 
 }
