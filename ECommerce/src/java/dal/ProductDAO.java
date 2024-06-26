@@ -44,11 +44,11 @@ public class ProductDAO {
         }
         return list;
     }
-    
+
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
         List<Product> list = dao.getAllProducts();
-        for(Product p : list){
+        for (Product p : list) {
             System.out.println(p.toString());
         }
     }

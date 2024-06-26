@@ -11,11 +11,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Category;
+
 /**
  *
  * @author DUYTHAI
  */
 public class CategoryDAO {
+
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -39,11 +41,11 @@ public class CategoryDAO {
         }
         return list;
     }
-    
+
     public static void main(String[] args) {
         CategoryDAO dao = new CategoryDAO();
         List<Category> list = dao.getAllCategories();
-        for(Category p : list){
+        for (Category p : list) {
             System.out.println(p.toString());
         }
     }

@@ -11,11 +11,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Order;
+
 /**
  *
  * @author DUYTHAI
  */
 public class OrderDAO {
+
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -42,11 +44,11 @@ public class OrderDAO {
         }
         return list;
     }
-    
+
     public static void main(String[] args) {
         OrderDAO dao = new OrderDAO();
         List<Order> list = dao.getAllOrders();
-        for(Order p : list){
+        for (Order p : list) {
             System.out.println(p.toString());
         }
     }
