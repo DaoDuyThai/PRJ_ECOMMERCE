@@ -16,17 +16,19 @@ public class Order {
     String delivery_address;
     String status;
     String note;
+    String date_created;
 
     public Order() {
     }
 
-    public Order(int id, int account_id, long total_price, String delivery_address, String status, String note) {
+    public Order(int id, int account_id, long total_price, String delivery_address, String status, String note, String date_created) {
         this.id = id;
         this.account_id = account_id;
         this.total_price = total_price;
         this.delivery_address = delivery_address;
         this.status = status;
         this.note = note;
+        this.date_created = date_created;
     }
 
     public int getId() {
@@ -77,9 +79,17 @@ public class Order {
         this.note = note;
     }
 
+    public String getDate_created() {
+        return date_created;
+    }
+
+    public void setDate_created(String date_created) {
+        this.date_created = date_created;
+    }
+
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", account_id=" + account_id + ", total_price=" + total_price + ", delivery_address=" + delivery_address + ", status=" + status + ", note=" + note + '}';
+        return "Order{" + "id=" + id + ", account_id=" + account_id + ", total_price=" + total_price + ", delivery_address=" + delivery_address + ", status=" + status + ", note=" + note + ", date_created=" + date_created + '}';
     }
 
 }

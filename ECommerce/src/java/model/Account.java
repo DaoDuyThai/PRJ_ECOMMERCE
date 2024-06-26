@@ -15,17 +15,19 @@ public class Account {
     String fullname;
     String avatar_url;
     String role;
-    
+    String date_created;
+
     public Account() {
     }
 
-    public Account(int id, String email, String password, String fullname, String avatar_url, String role) {
+    public Account(int id, String email, String password, String fullname, String avatar_url, String role, String dateCreated) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.fullname = fullname;
         this.avatar_url = avatar_url;
         this.role = role;
+        this.date_created = dateCreated;
     }
 
     public int getId() {
@@ -76,9 +78,17 @@ public class Account {
         this.role = role;
     }
 
+    public String getDateCreated() {
+        return date_created;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.date_created = dateCreated;
+    }
+
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", email=" + email + ", password=" + password + ", fullname=" + fullname + ", avatar_url=" + avatar_url + ", role=" + role + '}';
+        return "Account{" + "id=" + id + ", email=" + email + ", password=" + password + ", fullname=" + fullname + ", avatar_url=" + avatar_url + ", role=" + role + ", dateCreated=" + date_created + '}';
     }
 
 }

@@ -16,17 +16,19 @@ public class Product {
     String image_url;
     long price;
     int category_id;
+    String date_created;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, String image_url, long price, int category_id) {
+    public Product(int id, String name, String description, String image_url, long price, int category_id, String date_created) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.image_url = image_url;
         this.price = price;
         this.category_id = category_id;
+        this.date_created = date_created;
     }
 
     public int getId() {
@@ -77,9 +79,18 @@ public class Product {
         this.category_id = category_id;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", image_url=" + image_url + ", price=" + price + ", category_id=" + category_id + '}';
+    public String getDate_created() {
+        return date_created;
     }
 
+    public void setDate_created(String date_created) {
+        this.date_created = date_created;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", image_url=" + image_url + ", price=" + price + ", category_id=" + category_id + ", date_created=" + date_created + '}';
+    }
+
+    
 }

@@ -1,14 +1,13 @@
---CREATE DATABASE AND TABLES
-
 -- Check if the database exists and drop it if it does
 IF EXISTS (SELECT * FROM sys.databases WHERE name = 'PRJ_ECOMMERCE')
 BEGIN
-	USE master;
-  DROP DATABASE PRJ_ECOMMERCE;
+    USE master;
+    ALTER DATABASE PRJ_ECOMMERCE SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE PRJ_ECOMMERCE;
 END
 GO
 
--- Create the database PRJ
+-- Create the database PRJ_ECOMMERCE
 CREATE DATABASE PRJ_ECOMMERCE;
 GO
 
@@ -23,7 +22,8 @@ CREATE TABLE Accounts (
   [password] NVARCHAR(255) NOT NULL,
   [fullname] NVARCHAR(255) NOT NULL,
   avatar_url NVARCHAR(255),
-  [role] NVARCHAR(50) NOT NULL
+  [role] NVARCHAR(50) NOT NULL,
+  date_created DATETIME DEFAULT GETDATE()
 );
 GO
 
@@ -43,6 +43,7 @@ CREATE TABLE Products (
   image_url NVARCHAR(255),
   price BIGINT NOT NULL,
   category_id INT NOT NULL,
+  date_created DATETIME DEFAULT GETDATE(),
   FOREIGN KEY (category_id) REFERENCES Categories(id)
 );
 GO
@@ -55,11 +56,12 @@ CREATE TABLE Orders (
   delivery_address NVARCHAR(255) NOT NULL,
   [status] NVARCHAR(50) NOT NULL,
   note NVARCHAR(MAX),
+  date_created DATETIME DEFAULT GETDATE(),
   FOREIGN KEY (account_id) REFERENCES Accounts(id)
 );
 GO
 
--- Create the OrderProducts table with foreign keys to Products and Orders table
+-- Create the Order_details table with foreign keys to Products and Orders table
 CREATE TABLE Order_details (
   id INT IDENTITY(1,1) PRIMARY KEY,
   product_id INT NOT NULL,

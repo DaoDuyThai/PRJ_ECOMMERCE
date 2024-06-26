@@ -36,7 +36,8 @@ public class AccountDAO {
                         rs.getString("password"),
                         rs.getString("fullname"),
                         rs.getString("avatar_url"),
-                        rs.getString("role")
+                        rs.getString("role"),
+                        rs.getString("date_created")
                 ));
             }
         } catch (Exception e) {

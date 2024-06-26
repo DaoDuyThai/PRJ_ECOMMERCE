@@ -36,7 +36,8 @@ public class ProductDAO {
                         rs.getString("description"),
                         rs.getString("image_url"),
                         rs.getLong("price"),
-                        rs.getInt("category_id")
+                        rs.getInt("category_id"),
+                        rs.getString("date_created")
                 ));
             }
         } catch (Exception e) {

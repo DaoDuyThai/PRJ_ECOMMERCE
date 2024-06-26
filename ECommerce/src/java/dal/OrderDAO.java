@@ -36,7 +36,8 @@ public class OrderDAO {
                         rs.getLong("total_price"),
                         rs.getString("delivery_address"),
                         rs.getString("status"),
-                        rs.getString("note")
+                        rs.getString("note"),
+                        rs.getString("date_created")
                 ));
             }
         } catch (Exception e) {
