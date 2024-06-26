@@ -1,12 +1,11 @@
 <%-- 
     Document   : index
-    Author     : CODEWITHDT
+    Author     : codewithdt
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -200,27 +199,6 @@
 	</nav>
 	<!-- /NAVIGATION -->
 
-	<!-- BREADCRUMB -->
-	<div id="breadcrumb" class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<div class="col-md-12">
-					<ul class="breadcrumb-tree">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">All Categories</a></li>
-						<li><a href="#">Accessories</a></li>
-						<li class="active">Headphones (227,490 Results)</li>
-					</ul>
-				</div>
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /BREADCRUMB -->
-
 	<!-- SECTION -->
 	<div class="section">
 		<!-- container -->
@@ -233,58 +211,12 @@
 					<div class="aside">
 						<h3 class="aside-title">Categories</h3>
 						<div class="checkbox-filter">
-
 							<div class="input-checkbox">
 								<input type="checkbox" id="category-1">
 								<label for="category-1">
 									<span></span>
 									Laptops
 									<small>(120)</small>
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-2">
-								<label for="category-2">
-									<span></span>
-									Smartphones
-									<small>(740)</small>
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-3">
-								<label for="category-3">
-									<span></span>
-									Cameras
-									<small>(1450)</small>
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-4">
-								<label for="category-4">
-									<span></span>
-									Accessories
-									<small>(578)</small>
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-5">
-								<label for="category-5">
-									<span></span>
-									Laptops
-									<small>(120)</small>
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input type="checkbox" id="category-6">
-								<label for="category-6">
-									<span></span>
-									Smartphones
-									<small>(740)</small>
 								</label>
 							</div>
 						</div>
@@ -297,15 +229,12 @@
 						<div class="price-filter">
 							<div id="price-slider"></div>
 							<div class="input-number price-min">
-								<input id="price-min" type="number">
-								<span class="qty-up">+</span>
-								<span class="qty-down">-</span>
+								<input id="price-min" type="number" class="vnd">
+
 							</div>
 							<span>-</span>
 							<div class="input-number price-max">
-								<input id="price-max" type="number">
-								<span class="qty-up">+</span>
-								<span class="qty-down">-</span>
+								<input id="price-max" type="number" class="vnd">
 							</div>
 						</div>
 					</div>
@@ -415,23 +344,12 @@
 							<label>
 								Sort By:
 								<select class="input-select">
-									<option value="0">Popular</option>
-									<option value="1">Position</option>
-								</select>
-							</label>
-
-							<label>
-								Show:
-								<select class="input-select">
-									<option value="0">20</option>
-									<option value="1">50</option>
+									<option value="0">Price Ascending</option>
+									<option value="1">Price Descending</option>
 								</select>
 							</label>
 						</div>
-						<ul class="store-grid">
-							<li class="active"><i class="fa fa-th"></i></li>
-							<li><a href="#"><i class="fa fa-th-list"></i></a></li>
-						</ul>
+						
 					</div>
 					<!-- /store top filter -->
 
@@ -466,7 +384,6 @@
 
 					<!-- store bottom filter -->
 					<div class="store-filter clearfix">
-						<span class="store-qty">Showing 20-100 products</span>
 						<ul class="store-pagination">
 							<li class="active">1</li>
 							<li><a href="#">2</a></li>
