@@ -36,12 +36,15 @@
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 
+	<!-- Cloudinary -->
+	<script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
@@ -53,7 +56,8 @@
 			<div class="container">
 				<ul class="header-links pull-left">
 					<li><a href="callto:+84796428094"><i class="fa fa-phone"></i> +84 79-6428-094</a></li>
-					<li><a href="mailto:daoduythai.business@gmail.com"><i class="fa fa-envelope-o"></i> daoduythai.business@gmail.com</a></li>
+					<li><a href="mailto:daoduythai.business@gmail.com"><i class="fa fa-envelope-o"></i>
+							daoduythai.business@gmail.com</a></li>
 					<li><a href="https://codewithdt.com"><i class="fa fa-send"></i>CodewithDT</a></li>
 				</ul>
 				<ul class="header-links pull-right">
@@ -198,248 +202,70 @@
 	</nav>
 	<!-- /NAVIGATION -->
 
-
-	<!-- SECTION -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<!-- Product main img -->
-				<div class="col-md-5 col-md-push-2">
-					<div id="product-main-img">
-						<div class="product-preview">
-							<img src="./img/product01.png" alt="">
-						</div>
-
-						<div class="product-preview">
-							<img src="./img/product03.png" alt="">
-						</div>
-
-						<div class="product-preview">
-							<img src="./img/product06.png" alt="">
-						</div>
-
-						<div class="product-preview">
-							<img src="./img/product08.png" alt="">
-						</div>
-					</div>
-				</div>
-				<!-- /Product main img -->
-
-				<!-- Product thumb imgs -->
-				<div class="col-md-2  col-md-pull-5">
-					<div id="product-imgs">
-						<div class="product-preview">
-							<img src="./img/product01.png" alt="">
-						</div>
-
-						<div class="product-preview">
-							<img src="./img/product03.png" alt="">
-						</div>
-
-						<div class="product-preview">
-							<img src="./img/product06.png" alt="">
-						</div>
-
-						<div class="product-preview">
-							<img src="./img/product08.png" alt="">
-						</div>
-					</div>
-				</div>
-				<!-- /Product thumb imgs -->
-
-				<!-- Product details -->
-				<div class="col-md-5">
-					<div class="product-details">
-						<h2 class="product-name">product name goes here</h2>
-						<div>
-							<h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
-							<span class="product-available">In Stock</span>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-							laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-						<div class="add-to-cart">
-							<div class="qty-label">
-								Qty
-								<div class="input-number">
-									<input type="number">
-									<span class="qty-up">+</span>
-									<span class="qty-down">-</span>
-								</div>
-							</div>
-							<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-						</div>
-
-						<ul class="product-links">
-							<li>Category:</li>
-							<li><a href="store.html">Accessories</a></li>
-						</ul>
-
-						<ul class="product-links">
-							<li>Share:</li>
-							<li><a href="https://www.facebook.com/duythai.ddt/"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="https://twitter.com/codewithdt"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="https://www.instagram.com/dduy_thai/"><i class="fa fa-instagram"></i></a></li>
-							<li><a href="https://www.youtube.com/@codewithdt"><i class="fa fa-youtube-play-play"></i></a></li>
-						</ul>
-
-					</div>
-				</div>
-				<!-- /Product details -->
-
-				<!-- Product tab -->
-				<div class="col-md-12">
-					<div id="product-tab">
-						<!-- product tab nav -->
-						<ul class="tab-nav">
-							<li class="active"><a data-toggle="tab" href="#tab1">Details</a></li>
-						</ul>
-						<!-- /product tab nav -->
-
-						<!-- product tab content -->
-						<div class="tab-content">
-							<!-- tab1  -->
-							<div id="tab1" class="tab-pane fade in active">
-								<div class="row">
-									<div class="col-md-12">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-											tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-											quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-											consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-											cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-											non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-										</p>
-									</div>
-								</div>
-							</div>
-							<!-- /tab1  -->
-						</div>
-						<!-- /product tab content  -->
-					</div>
-				</div>
-				<!-- /product tab -->
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /SECTION -->
-
-	<!-- Section -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-
-				<div class="col-md-12">
-					<div class="section-title text-center">
-						<h3 class="title">Related Products</h3>
-					</div>
-				</div>
-
-				<!-- product -->
-				<div class="col-md-3 col-xs-6">
-					<div class="product">
-						<div class="product-img">
-							<img src="./img/product01.png" alt="">
-							<div class="product-label">
-								<span class="sale">-30%</span>
-							</div>
-						</div>
-						<div class="product-body">
-							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="#">product name goes here</a></h3>
-							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-						</div>
-						<div class="add-to-cart">
-							<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-						</div>
-					</div>
-				</div>
-				<!-- /product -->
-
-				<!-- product -->
-				<div class="col-md-3 col-xs-6">
-					<div class="product">
-						<div class="product-img">
-							<img src="./img/product02.png" alt="">
-							<div class="product-label">
-								<span class="new">NEW</span>
-							</div>
-						</div>
-						<div class="product-body">
-							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="#">product name goes here</a></h3>
-							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-						</div>
-						<div class="add-to-cart">
-							<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-						</div>
-					</div>
-				</div>
-				<!-- /product -->
-
-				<div class="clearfix visible-sm visible-xs"></div>
-
-				<!-- product -->
-				<div class="col-md-3 col-xs-6">
-					<div class="product">
-						<div class="product-img">
-							<img src="./img/product03.png" alt="">
-						</div>
-						<div class="product-body">
-							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="#">product name goes here</a></h3>
-							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-						</div>
-						<div class="add-to-cart">
-							<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-						</div>
-					</div>
-				</div>
-				<!-- /product -->
-
-				<!-- product -->
-				<div class="col-md-3 col-xs-6">
-					<div class="product">
-						<div class="product-img">
-							<img src="./img/product04.png" alt="">
-						</div>
-						<div class="product-body">
-							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="#">product name goes here</a></h3>
-							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-						</div>
-						<div class="add-to-cart">
-							<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-						</div>
-					</div>
-				</div>
-				<!-- /product -->
-
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /Section -->
-
 	<!-- NEWSLETTER -->
-	<div id="newsletter" class="section">
+	<div id="" class="section">
 		<!-- container -->
 		<div class="container">
 			<!-- row -->
 			<div class="row">
 				<div class="col-md-12">
 					<div class="newsletter">
-						<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+						<p><strong>UPDATE PROFILE</strong></p>
 						<form>
-							<input class="input" type="email" placeholder="Enter Your Email">
-							<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							<div class="row">
+								<div class="label-auth">
+									<b>Email</b>
+								</div>
+							</div>
+							<div class="row">
+								<input id="email" name="email" class="input input-auth" type="email"
+									placeholder="Enter Your Email" readonly>
+
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>Old Password</b>
+								</div>
+							</div>
+							<div class="row">
+								<input id="old-password" name="old-password" class="input input-auth" type="password"
+									placeholder="Enter Your Old Password" required>
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>New Password</b>
+								</div>
+							</div>
+							<div class="row">
+								<input id="new-password" name="new-password" class="input input-auth" type="password"
+									placeholder="Enter Your New Password" required>
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>Fullname</b>
+								</div>
+							</div>
+							<div class="row">
+								<input id="fullname" name="fullname" class="input input-auth" type="text"
+									placeholder="Enter Your Fullname" required>
+							</div>
+							<div class="row">
+								<div class="label-auth">
+									<b>Avatar</b>
+								</div>
+							</div>
+							<div class="row">
+								<button type="button" id="upload_widget" class="cloudinary-button"
+									style="background-color: #D10024; border: 0px;">Upload files</button>
+								<img id="avatar-thumbnail" width="200px" height="200px" />
+							</div>
+							<div class="error-message">
+								<b>*Error Message</b>
+							</div>
+							<br />
+							<input id="image-url" name="image-url" class="input input-auth" type="text"
+								placeholder="Image URL" style="display: none;">
+							<button type="submit" class="newsletter-btn input-auth-btn">UPDATE</button>
 						</form>
 						<ul class="newsletter-follow">
 							<li>
@@ -479,7 +305,8 @@
 								incididunt ut.</p>
 							<ul class="footer-links">
 								<li><a href="callto:+84796428094"><i class="fa fa-phone"></i> +84 79-6428-094</a></li>
-								<li><a href="mailto:daoduythai.business@gmail.com"><i class="fa fa-envelope-o"></i>daoduythai.business@gmail.com</a></li>
+								<li><a href="mailto:daoduythai.business@gmail.com"><i
+											class="fa fa-envelope-o"></i>daoduythai.business@gmail.com</a></li>
 								<li><a href="https://codewithdt.com"><i class="fa fa-send"></i>CodewithDT</a></li>
 							</ul>
 						</div>
@@ -528,6 +355,31 @@
 	<script src="js/nouislider.min.js"></script>
 	<script src="js/jquery.zoom.min.js"></script>
 	<script src="js/main.js"></script>
+
+	<!-- Cloudinary -->
+	<script type="text/javascript">
+		var myWidget = cloudinary.createUploadWidget({
+			cloudName: 'dmqd2y3mp',
+			uploadPreset: 'square_2MB',
+			cropping: true, //add a cropping step
+			showSkipCropButton: false, //don't show the skip crop button
+			croppingAspectRatio: 1, //crop the image to a 1:1 aspect ratio
+			sources: ["local", "url"], // restrict the upload sources to URL and local files
+			multiple: false, //restrict upload to a single file
+			folder: "PRJ_ECOMMERCE", //upload files to the specified folder
+			resourceType: "image", //specify the resource type to upload
+		}, (error, result) => {
+			if (!error && result && result.event === "success") {
+				console.log('Done! Here is the image info: ', result.info);
+				document.querySelector('#avatar-thumbnail').src = result.info.secure_url;
+				document.querySelector('#image-url').value = result.info.secure_url;
+			}
+		})
+
+		document.getElementById("upload_widget").addEventListener("click", function () {
+			myWidget.open();
+		}, false);
+	</script>
 
 </body>
 
