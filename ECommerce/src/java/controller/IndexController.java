@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -55,6 +57,11 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        ProductDAO dao = new ProductDAO();
+        List<Object[]> top6NewestProductList = dao.getTop6NewestProducts();
+        request.setAttribute("top6NewestProductList", top6NewestProductList);
+        
+        
         request.getRequestDispatcher("index.jsp").forward(request, response);
     } 
 
