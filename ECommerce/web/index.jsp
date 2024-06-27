@@ -283,84 +283,36 @@
                         <div class="products-widget-slick" data-nav="#slick-nav-3">
                             <div>
                                 <!-- product widget -->
-                                <div class="product-widget">
+                                <c:forEach var="p" items="${requestScope.firstSmartphoneList}">
+                                    <div class="product-widget">
                                     <div class="product-img">
-                                        <img src="./img/product07.png" alt="">
+                                        <img src="${p[3]}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">${p[4]}</p>
+                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                        <h4 class="product-price vnd">${p[2]}</h4>
                                     </div>
                                 </div>
+                                </c:forEach>
                                 <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product08.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product09.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- product widget -->
                             </div>
 
                             <div>
                                 <!-- product widget -->
-                                <div class="product-widget">
+                                <c:forEach var="p" items="${requestScope.lastSmartphoneList}">
+                                    <div class="product-widget">
                                     <div class="product-img">
-                                        <img src="./img/product01.png" alt="">
+                                        <img src="${p[3]}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">${p[4]}</p>
+                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                        <h4 class="product-price vnd">${p[2]}</h4>
                                     </div>
                                 </div>
+                                </c:forEach>
                                 <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product02.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product03.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- product widget -->
                             </div>
                         </div>
                     </div>
@@ -376,84 +328,36 @@
                         <div class="products-widget-slick" data-nav="#slick-nav-4">
                             <div>
                                 <!-- product widget -->
-                                <div class="product-widget">
+                                <c:forEach var="p" items="${requestScope.firstCameraList}">
+                                    <div class="product-widget">
                                     <div class="product-img">
-                                        <img src="./img/product04.png" alt="">
+                                        <img src="${p[3]}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">${p[4]}</p>
+                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                        <h4 class="product-price vnd">${p[2]}</h4>
                                     </div>
                                 </div>
+                                </c:forEach>
                                 <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product05.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product06.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- product widget -->
                             </div>
 
                             <div>
                                 <!-- product widget -->
-                                <div class="product-widget">
+                                <c:forEach var="p" items="${requestScope.lastCameraList}">
+                                    <div class="product-widget">
                                     <div class="product-img">
-                                        <img src="./img/product07.png" alt="">
+                                        <img src="${p[3]}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">${p[4]}</p>
+                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                        <h4 class="product-price vnd">${p[2]}</h4>
                                     </div>
                                 </div>
+                                </c:forEach>
                                 <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product08.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product09.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- product widget -->
                             </div>
                         </div>
                     </div>
@@ -471,84 +375,36 @@
                         <div class="products-widget-slick" data-nav="#slick-nav-5">
                             <div>
                                 <!-- product widget -->
-                                <div class="product-widget">
+                                <c:forEach var="p" items="${requestScope.firstAccessoriesList}">
+                                    <div class="product-widget">
                                     <div class="product-img">
-                                        <img src="./img/product01.png" alt="">
+                                        <img src="${p[3]}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">${p[4]}</p>
+                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                        <h4 class="product-price vnd">${p[2]}</h4>
                                     </div>
                                 </div>
+                                </c:forEach>
                                 <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product02.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product03.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- product widget -->
                             </div>
 
                             <div>
                                 <!-- product widget -->
-                                <div class="product-widget">
+                                <c:forEach var="p" items="${requestScope.lastAccessoriesList}">
+                                    <div class="product-widget">
                                     <div class="product-img">
-                                        <img src="./img/product04.png" alt="">
+                                        <img src="${p[3]}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">${p[4]}</p>
+                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                        <h4 class="product-price vnd">${p[2]}</h4>
                                     </div>
                                 </div>
+                                </c:forEach>
                                 <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product05.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product06.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- product widget -->
                             </div>
                         </div>
                     </div>

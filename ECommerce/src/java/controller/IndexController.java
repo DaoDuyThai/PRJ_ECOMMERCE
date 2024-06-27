@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controller;
 
 import dal.ProductDAO;
@@ -19,36 +18,39 @@ import java.util.List;
  *
  * @author DUYTHAI
  */
-@WebServlet(name="IndexController", urlPatterns={"/index"})
+@WebServlet(name = "IndexController", urlPatterns = {"/index"})
 public class IndexController extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet IndexController</title>");  
+            out.println("<title>Servlet IndexController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet IndexController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet IndexController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -56,20 +58,38 @@ public class IndexController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         ProductDAO dao = new ProductDAO();
         List<Object[]> top6NewestProductList = dao.getTop6NewestProducts();
         request.setAttribute("top6NewestProductList", top6NewestProductList);
-        
+
         List<Object[]> mostBoughtLaptopList = dao.getTop6MostBoughtProducts("Laptop");
         request.setAttribute("mostBoughtLaptopList", mostBoughtLaptopList);
 
+        List<Object[]> mostBoughtSmartphoneList = dao.getTop6MostBoughtProducts("Smartphone");
+        List<Object[]> firstSmartphoneList = mostBoughtSmartphoneList.subList(0, 3);
+        request.setAttribute("firstSmartphoneList", firstSmartphoneList);
+        List<Object[]> lastSmartphoneList = mostBoughtSmartphoneList.subList(3, 6);
+        request.setAttribute("lastSmartphoneList", lastSmartphoneList);
+
+        List<Object[]> mostBoughtCameraList = dao.getTop6MostBoughtProducts("Camera");
+        List<Object[]> firstCameraList = mostBoughtCameraList.subList(0, 3);
+        request.setAttribute("firstCameraList", firstCameraList);
+        List<Object[]> lastCameraList = mostBoughtCameraList.subList(3, 6);
+        request.setAttribute("lastCameraList", lastCameraList);
+        
+        List<Object[]> mostBoughtAccessoriesList = dao.getTop6MostBoughtProducts("Accessories");
+        List<Object[]> firstAccessoriesList = mostBoughtAccessoriesList.subList(0, 3);
+        request.setAttribute("firstAccessoriesList", firstAccessoriesList);
+        List<Object[]> lastAccessoriesList = mostBoughtAccessoriesList.subList(3, 6);
+        request.setAttribute("lastAccessoriesList", lastAccessoriesList);
         
         request.getRequestDispatcher("index.jsp").forward(request, response);
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -77,12 +97,13 @@ public class IndexController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override
