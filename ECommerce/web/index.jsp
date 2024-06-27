@@ -231,103 +231,25 @@
                                 <div id="tab2" class="tab-pane fade in active">
                                     <div class="products-slick" data-nav="#slick-nav-2">
                                         <!-- product -->
-                                        <div class="product">
-                                            <div class="product-img">
-                                                <img src="./img/product06.png" alt="">
-                                                <div class="product-label">
-                                                    <span class="sale">-30%</span>
-                                                    <span class="new">NEW</span>
+                                        <c:forEach var="p" items="${requestScope.mostBoughtLaptopList}">
+                                            <div class="product">
+                                                <div class="product-img">
+                                                    <img src="${p[3]}" alt="">
+                                                    <div class="product-label">
+                                                        <span class="sale">TOP SELLING</span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-body">
+                                                    <p class="product-category">${p[4]}</p>
+                                                    <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                                    <h4 class="product-price vnd">${p[2]}</h4>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                                                        cart</button>
                                                 </div>
                                             </div>
-                                            <div class="product-body">
-                                                <p class="product-category">Category</p>
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price">$980.00 <del
-                                                        class="product-old-price">$990.00</del></h4>
-                                            </div>
-                                            <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
-                                                    cart</button>
-                                            </div>
-                                        </div>
-                                        <!-- /product -->
-
-                                        <!-- product -->
-                                        <div class="product">
-                                            <div class="product-img">
-                                                <img src="./img/product07.png" alt="">
-                                                <div class="product-label">
-                                                    <span class="new">NEW</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-body">
-                                                <p class="product-category">Category</p>
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price">$980.00 <del
-                                                        class="product-old-price">$990.00</del></h4>
-                                            </div>
-                                            <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
-                                                    cart</button>
-                                            </div>
-                                        </div>
-                                        <!-- /product -->
-
-                                        <!-- product -->
-                                        <div class="product">
-                                            <div class="product-img">
-                                                <img src="./img/product08.png" alt="">
-                                                <div class="product-label">
-                                                    <span class="sale">-30%</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-body">
-                                                <p class="product-category">Category</p>
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price">$980.00 <del
-                                                        class="product-old-price">$990.00</del></h4>
-                                            </div>
-                                            <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
-                                                    cart</button>
-                                            </div>
-                                        </div>
-                                        <!-- /product -->
-
-                                        <!-- product -->
-                                        <div class="product">
-                                            <div class="product-img">
-                                                <img src="./img/product09.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <p class="product-category">Category</p>
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price">$980.00 <del
-                                                        class="product-old-price">$990.00</del></h4>
-                                            </div>
-                                            <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
-                                                    cart</button>
-                                            </div>
-                                        </div>
-                                        <!-- /product -->
-
-                                        <!-- product -->
-                                        <div class="product">
-                                            <div class="product-img">
-                                                <img src="./img/product01.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <p class="product-category">Category</p>
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price">$980.00 <del
-                                                        class="product-old-price">$990.00</del></h4>
-                                            </div>
-                                            <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
-                                                    cart</button>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                         <!-- /product -->
                                     </div>
                                     <div id="slick-nav-2" class="products-slick-nav"></div>
@@ -649,7 +571,27 @@
         <script src="js/nouislider.min.js"></script>
         <script src="js/jquery.zoom.min.js"></script>
         <script src="js/main.js"></script>
+        <script>
+		function formatNumberToVND(number) {
+			return number.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+		}
 
+		function formatVND() {
+			// Get all elements with the class name 'vnd'
+			const elements = document.getElementsByClassName('vnd');
+
+			// Loop through the elements and format the content
+			for (let i = 0; i < elements.length; i++) {
+				const value = parseInt(elements[i].textContent, 10);
+				if (!isNaN(value)) {
+					elements[i].textContent = formatNumberToVND(value);
+				}
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', formatVND);
+	</script>
+        
     </body>
 
 </html>

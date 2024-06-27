@@ -61,6 +61,9 @@ public class IndexController extends HttpServlet {
         List<Object[]> top6NewestProductList = dao.getTop6NewestProducts();
         request.setAttribute("top6NewestProductList", top6NewestProductList);
         
+        List<Object[]> mostBoughtLaptopList = dao.getTop6MostBoughtProducts("Laptop");
+        request.setAttribute("mostBoughtLaptopList", mostBoughtLaptopList);
+
         
         request.getRequestDispatcher("index.jsp").forward(request, response);
     } 

@@ -152,29 +152,7 @@
             var value = values[handle];
             handle ? priceInputMax.value = value : priceInputMin.value = value
         });
-    }
-    ;
-
-//        format vnd 
-    function formatNumberToVND(number) {
-        return number.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
-    }
-
-    function formatVND() {
-        // Get all elements with the class name 'vnd'
-        const elements = document.getElementsByClassName('vnd');
-
-        // Loop through the elements and format the content
-        for (let i = 0; i < elements.length; i++) {
-            const value = parseInt(elements[i].textContent, 10);
-            if (!isNaN(value)) {
-                elements[i].textContent = formatNumberToVND(value);
-            }
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', formatVND);
-
+    };    
 
 })(jQuery);
 
