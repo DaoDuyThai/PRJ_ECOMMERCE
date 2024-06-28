@@ -46,8 +46,30 @@ public class ProductDAO {
         return list;
     }
 
-    public List<Object[]> getTop6NewestProducts() {
-        String query = "SELECT TOP 6 P.id, P.name, P.price, P.image_url, C.name as category FROM Products P JOIN Categories C ON P.category_id = c.id ORDER BY P.date_created DESC";
+    public List<Object[]> getTopNewestProducts() {
+        String query = "WITH RankedProducts AS (\n"
+                + "    SELECT \n"
+                + "        P.id, \n"
+                + "        P.name, \n"
+                + "        P.price, \n"
+                + "        P.image_url, \n"
+                + "        C.name as category,\n"
+                + "        ROW_NUMBER() OVER (PARTITION BY P.category_id ORDER BY P.date_created DESC) as rn\n"
+                + "    FROM \n"
+                + "        Products P \n"
+                + "    JOIN \n"
+                + "        Categories C ON P.category_id = C.id\n"
+                + ")\n"
+                + "SELECT \n"
+                + "    id, \n"
+                + "    name, \n"
+                + "    price, \n"
+                + "    image_url, \n"
+                + "    category \n"
+                + "FROM \n"
+                + "    RankedProducts \n"
+                + "WHERE \n"
+                + "    rn <= 2;";
         List<Object[]> list = new ArrayList<>();
         try {
             conn = new DBContext().getConnection();
@@ -82,7 +104,7 @@ public class ProductDAO {
                 + "JOIN \n"
                 + "    Order_details OD ON P.id = OD.product_id\n"
                 + "WHERE \n"
-                + "    C.[name] = '"+categoryName+"'\n"
+                + "    C.[name] = '" + categoryName + "'\n"
                 + "GROUP BY \n"
                 + "    P.id, P.[name], P.[description], P.image_url, P.price, C.name;";
         List<Object[]> list = new ArrayList<>();
