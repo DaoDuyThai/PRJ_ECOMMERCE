@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Author     : codewithdt
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -12,9 +7,8 @@
         <div class="container">
             <ul class="header-links pull-left">
                 <li><a href="callto:+84796428094"><i class="fa fa-phone"></i> +84 79-6428-094</a></li>
-                <li><a href="mailto:daoduythai.business@gmail.com"><i class="fa fa-envelope-o"></i>
-                        daoduythai.business@gmail.com</a></li>
-                <li><a href="https://codewithdt.com"><i class="fa fa-send"></i>CodewithDT</a></li>
+                <li><a href="mailto:daoduythai.business@gmail.com"><i class="fa fa-envelope-o"></i> daoduythai.business@gmail.com</a></li>
+                <li><a href="https://codewithdt.com"><i class="fa fa-send"></i> CodewithDT</a></li>
             </ul>
             <ul class="header-links pull-right">
                 <li><a href="#"><i class=""></i> Login</a></li>
@@ -45,14 +39,9 @@
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form>
-                            <select class="input-select">
-                                <option value="0">All Categories</option>
-                                <option value="1">Category 01</option>
-                                <option value="1">Category 02</option>
-                            </select>
-                            <input class="input" placeholder="Search here">
-                            <button class="search-btn">Search</button>
+                        <form id="searchForm" onsubmit="return searchProducts()">
+                            <input id="searchInput" class="input" type="text" placeholder="Search here" style="width: calc(100% - 100px);border-radius: 40px 0px 0px 40px;" value="${param.search}" >
+                            <button type="submit" class="search-btn">Search</button>
                         </form>
                     </div>
                 </div>
@@ -145,3 +134,21 @@
     <!-- /container -->
 </nav>
 <!-- /NAVIGATION -->
+
+<script>
+    function searchProducts() {
+        const searchInput = document.getElementById('searchInput').value.trim();
+
+        const params = new URLSearchParams();
+
+        // Add search input parameter if provided
+        if (searchInput !== '') {
+            params.set('search', searchInput);
+        }
+
+        // Construct new URL with parameters
+        const newUrl = '/ecommerce/store?' + params.toString();
+        window.location.href = newUrl;
+        return false; // Prevent the default form submit
+    }
+</script>
