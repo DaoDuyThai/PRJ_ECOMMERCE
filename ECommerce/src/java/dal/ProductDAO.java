@@ -46,7 +46,7 @@ public class ProductDAO {
         return list;
     }
 
-    public List<Object[]> getTopNewestProducts() {
+    public List<Object[]> getNewestProducts() {
         String query = "WITH RankedProducts AS (\n"
                 + "    SELECT \n"
                 + "        P.id, \n"
@@ -127,13 +127,55 @@ public class ProductDAO {
         return list;
     }
 
+    public int getTotalProducts() {
+        int total = 0;
+        String sql = "SELECT COUNT(*) FROM Products";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return total;
+    }
+
+    public List<Product> getAllProducts(int pageNumber, int pageSize) {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM Products ORDER BY id OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, (pageNumber - 1) * pageSize);
+            ps.setInt(2, pageSize);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Product(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("description"),
+                        rs.getString("image_url"),
+                        rs.getLong("price"),
+                        rs.getInt("category_id"),
+                        rs.getString("date_created")
+                ));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } 
+        return list;
+    }
+
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        List<Object[]> list = dao.getTop6MostBoughtProducts("Laptop");
-        for (Object[] product : list) {
-            System.out.println("ID: " + product[0] + ", Name: " + product[1]
-                    + ", Price: " + product[2] + ", Image URL: " + product[3]
-                    + ", Category: " + product[4]);
+        int pageNumber = 1; // for example, fetch the first page
+        int pageSize = 5; // for example, fetch 5 products per page
+        List<Product> products = dao.getAllProducts(pageNumber, pageSize);
+        for (Product product : products) {
+            System.out.println(product);
         }
     }
 }

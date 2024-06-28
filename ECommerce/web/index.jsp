@@ -127,7 +127,7 @@
                                 <div id="tab1" class="tab-pane active">
                                     <div class="products-slick" data-nav="#slick-nav-1">
                                         <!-- product -->
-                                        <c:forEach var="p" items="${requestScope.top6NewestProductList}">
+                                        <c:forEach var="p" items="${requestScope.getNewestProductList}">
                                             <div class="product">
                                                 <div class="product-img">
                                                     <img src="${p[3]}" alt="">
@@ -285,15 +285,15 @@
                                 <!-- product widget -->
                                 <c:forEach var="p" items="${requestScope.firstSmartphoneList}">
                                     <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="${p[3]}" alt="">
+                                        <div class="product-img">
+                                            <img src="${p[3]}" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">${p[4]}</p>
+                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h4 class="product-price vnd">${p[2]}</h4>
+                                        </div>
                                     </div>
-                                    <div class="product-body">
-                                        <p class="product-category">${p[4]}</p>
-                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
-                                        <h4 class="product-price vnd">${p[2]}</h4>
-                                    </div>
-                                </div>
                                 </c:forEach>
                                 <!-- /product widget -->
                             </div>
@@ -302,15 +302,15 @@
                                 <!-- product widget -->
                                 <c:forEach var="p" items="${requestScope.lastSmartphoneList}">
                                     <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="${p[3]}" alt="">
+                                        <div class="product-img">
+                                            <img src="${p[3]}" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">${p[4]}</p>
+                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h4 class="product-price vnd">${p[2]}</h4>
+                                        </div>
                                     </div>
-                                    <div class="product-body">
-                                        <p class="product-category">${p[4]}</p>
-                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
-                                        <h4 class="product-price vnd">${p[2]}</h4>
-                                    </div>
-                                </div>
                                 </c:forEach>
                                 <!-- /product widget -->
                             </div>
@@ -330,15 +330,15 @@
                                 <!-- product widget -->
                                 <c:forEach var="p" items="${requestScope.firstCameraList}">
                                     <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="${p[3]}" alt="">
+                                        <div class="product-img">
+                                            <img src="${p[3]}" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">${p[4]}</p>
+                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h4 class="product-price vnd">${p[2]}</h4>
+                                        </div>
                                     </div>
-                                    <div class="product-body">
-                                        <p class="product-category">${p[4]}</p>
-                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
-                                        <h4 class="product-price vnd">${p[2]}</h4>
-                                    </div>
-                                </div>
                                 </c:forEach>
                                 <!-- /product widget -->
                             </div>
@@ -347,15 +347,15 @@
                                 <!-- product widget -->
                                 <c:forEach var="p" items="${requestScope.lastCameraList}">
                                     <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="${p[3]}" alt="">
+                                        <div class="product-img">
+                                            <img src="${p[3]}" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">${p[4]}</p>
+                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h4 class="product-price vnd">${p[2]}</h4>
+                                        </div>
                                     </div>
-                                    <div class="product-body">
-                                        <p class="product-category">${p[4]}</p>
-                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
-                                        <h4 class="product-price vnd">${p[2]}</h4>
-                                    </div>
-                                </div>
                                 </c:forEach>
                                 <!-- /product widget -->
                             </div>
@@ -377,15 +377,15 @@
                                 <!-- product widget -->
                                 <c:forEach var="p" items="${requestScope.firstAccessoriesList}">
                                     <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="${p[3]}" alt="">
+                                        <div class="product-img">
+                                            <img src="${p[3]}" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">${p[4]}</p>
+                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h4 class="product-price vnd">${p[2]}</h4>
+                                        </div>
                                     </div>
-                                    <div class="product-body">
-                                        <p class="product-category">${p[4]}</p>
-                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
-                                        <h4 class="product-price vnd">${p[2]}</h4>
-                                    </div>
-                                </div>
                                 </c:forEach>
                                 <!-- /product widget -->
                             </div>
@@ -394,15 +394,15 @@
                                 <!-- product widget -->
                                 <c:forEach var="p" items="${requestScope.lastAccessoriesList}">
                                     <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="${p[3]}" alt="">
+                                        <div class="product-img">
+                                            <img src="${p[3]}" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">${p[4]}</p>
+                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h4 class="product-price vnd">${p[2]}</h4>
+                                        </div>
                                     </div>
-                                    <div class="product-body">
-                                        <p class="product-category">${p[4]}</p>
-                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
-                                        <h4 class="product-price vnd">${p[2]}</h4>
-                                    </div>
-                                </div>
                                 </c:forEach>
                                 <!-- /product widget -->
                             </div>
@@ -428,26 +428,26 @@
         <script src="js/jquery.zoom.min.js"></script>
         <script src="js/main.js"></script>
         <script>
-		function formatNumberToVND(number) {
-			return number.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-		}
+            function formatNumberToVND(number) {
+                return number.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+            }
 
-		function formatVND() {
-			// Get all elements with the class name 'vnd'
-			const elements = document.getElementsByClassName('vnd');
+            function formatVND() {
+                // Get all elements with the class name 'vnd'
+                const elements = document.getElementsByClassName('vnd');
 
-			// Loop through the elements and format the content
-			for (let i = 0; i < elements.length; i++) {
-				const value = parseInt(elements[i].textContent, 10);
-				if (!isNaN(value)) {
-					elements[i].textContent = formatNumberToVND(value);
-				}
-			}
-		}
+                // Loop through the elements and format the content
+                for (let i = 0; i < elements.length; i++) {
+                    const value = parseInt(elements[i].textContent, 10);
+                    if (!isNaN(value)) {
+                        elements[i].textContent = formatNumberToVND(value);
+                    }
+                }
+            }
 
-		document.addEventListener('DOMContentLoaded', formatVND);
-	</script>
-        
+            document.addEventListener('DOMContentLoaded', formatVND);
+        </script>
+
     </body>
 
 </html>

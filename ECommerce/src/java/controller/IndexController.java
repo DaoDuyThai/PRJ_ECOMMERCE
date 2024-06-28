@@ -60,8 +60,8 @@ public class IndexController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductDAO dao = new ProductDAO();
-        List<Object[]> top6NewestProductList = dao.getTopNewestProducts();
-        request.setAttribute("top6NewestProductList", top6NewestProductList);
+        List<Object[]> getNewestProductList = dao.getNewestProducts();
+        request.setAttribute("getNewestProductList", getNewestProductList);
 
         List<Object[]> mostBoughtLaptopList = dao.getTop6MostBoughtProducts("Laptop");
         request.setAttribute("mostBoughtLaptopList", mostBoughtLaptopList);
