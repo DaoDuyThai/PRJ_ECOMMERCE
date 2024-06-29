@@ -46,7 +46,8 @@
                                 <c:forEach var="c" items="${requestScope.categoryList}">
                                     <div class="radio-filter">
                                         <div class="input-radio">
-                                            <input type="radio" id="${c[0]}" name="category" value="${c[0]}">
+                                            <input type="radio" id="${c[0]}" name="category" value="${c[0]}" 
+                                                   <c:if test="${param.category == c[0]}">checked</c:if>>
                                             <label for="${c[0]}">
                                                 <span></span>
                                                 ${c[0]}
@@ -81,73 +82,96 @@
                                 <h3 class="aside-title">Brand</h3>
                                 <div class="radio-filter">
                                     <div class="input-radio">
-                                        <input type="radio" id="brand-1" name="brand" value="SAMSUNG">
-                                        <label for="brand-1">
-                                            <span></span>
-                                            SAMSUNG
-                                        </label>
+                                        <input type="radio" id="brand-samsung" name="brand" value="SAMSUNG" <c:if test="${param.brand == 'SAMSUNG'}">checked</c:if>>
+                                            <label for="brand-samsung">
+                                                <span></span>
+                                                SAMSUNG
+                                            </label>
+                                        </div>
+                                        <div class="input-radio">
+                                            <input type="radio" id="brand-apple" name="brand" value="APPLE" <c:if test="${param.brand == 'APPLE'}">checked</c:if>>
+                                            <label for="brand-apple">
+                                                <span></span>
+                                                APPLE
+                                            </label>
+                                        </div>
+                                        <div class="input-radio">
+                                            <input type="radio" id="brand-asus" name="brand" value="ASUS" <c:if test="${param.brand == 'ASUS'}">checked</c:if>>
+                                            <label for="brand-asus">
+                                                <span></span>
+                                                ASUS
+                                            </label>
+                                        </div>
+                                        <div class="input-radio">
+                                            <input type="radio" id="brand-dell" name="brand" value="DELL" <c:if test="${param.brand == 'DELL'}">checked</c:if>>
+                                            <label for="brand-dell">
+                                                <span></span>
+                                                DELL
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /aside Widget -->
+                                <br/>
+                                <div style="display: flex; justify-content: center">
+                                    <button type="submit" style="width: 160px; height: 40px; font-weight: 700; background: #D10024; color: #FFF; border: none; border-radius: 40px;">
+                                        Search
+                                    </button>
+                                </div>
+                                <br/>
+
+                            </form>
+                            <!-- /aside Widget -->
+
+                            <!-- aside Widget -->
+                            <div class="aside">
+                                <h3 class="aside-title">Top selling</h3>
+                                <div class="product-widget">
+                                    <div class="product-img">
+                                        <img src="./img/product01.png" alt="">
+                                    </div>
+                                    <div class="product-body">
+                                        <p class="product-category">Category</p>
+                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    </div>
+                                </div>
+
+                                <div class="product-widget">
+                                    <div class="product-img">
+                                        <img src="./img/product02.png" alt="">
+                                    </div>
+                                    <div class="product-body">
+                                        <p class="product-category">Category</p>
+                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    </div>
+                                </div>
+
+                                <div class="product-widget">
+                                    <div class="product-img">
+                                        <img src="./img/product03.png" alt="">
+                                    </div>
+                                    <div class="product-body">
+                                        <p class="product-category">Category</p>
+                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
                                     </div>
                                 </div>
                             </div>
                             <!-- /aside Widget -->
-
-                            <div style="display: flex; justify-content: center">
-                                <button type="submit" style="width: 160px; height: 40px; font-weight: 700; background: #D10024; color: #FFF; border: none; border-radius: 40px;">
-                                    Search
-                                </button>
-                            </div>
-                        </form>
-                        <!-- /aside Widget -->
-
-                        <!-- aside Widget -->
-                        <div class="aside">
-                            <h3 class="aside-title">Top selling</h3>
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="./img/product01.png" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="./img/product02.png" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="./img/product03.png" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
                         </div>
-                        <!-- /aside Widget -->
-                    </div>
-                    <!-- /ASIDE -->
+                        <!-- /ASIDE -->
 
-                    <!-- STORE -->
-                    <div id="store" class="col-md-9">
-                        <!-- store top filter -->
-                        <div class="store-filter clearfix">
-                            <div class="store-sort">
-                                <label>
-                                    Sort By:
-                                    <select class="input-select">
-                                        <option value="price_asc" <c:if test="${param.sort == 'price_asc'}">selected</c:if>>Price Ascending</option>
+                        <!-- STORE -->
+                        <div id="store" class="col-md-9">
+                            <!-- store top filter -->
+                            <div class="store-filter clearfix">
+                                <div class="store-sort">
+                                    <label>
+                                        Sort By:
+                                        <select class="input-select">
+                                            <option value="price_asc" <c:if test="${param.sort == 'price_asc'}">selected</c:if>>Price Ascending</option>
                                         <option value="price_desc" <c:if test="${param.sort == 'price_desc'}">selected</c:if>>Price Descending</option>
                                         </select>
                                     </label>
