@@ -44,9 +44,9 @@
                             <div class="aside">
                                 <h3 class="aside-title">Categories</h3>
                                 <c:forEach var="c" items="${requestScope.categoryList}">
-                                    <div class="checkbox-filter">
-                                        <div class="input-checkbox">
-                                            <input type="checkbox" id="${c[0]}" name="category" value="${c[0]}">
+                                    <div class="radio-filter">
+                                        <div class="input-radio">
+                                            <input type="radio" id="${c[0]}" name="category" value="${c[0]}">
                                             <label for="${c[0]}">
                                                 <span></span>
                                                 ${c[0]}
@@ -79,29 +79,12 @@
                             <!-- aside Widget -->
                             <div class="aside">
                                 <h3 class="aside-title">Brand</h3>
-                                <div class="checkbox-filter">
-                                    <div class="input-checkbox">
-                                        <input type="checkbox" id="brand-1" name="brand" value="SAMSUNG">
+                                <div class="radio-filter">
+                                    <div class="input-radio">
+                                        <input type="radio" id="brand-1" name="brand" value="SAMSUNG">
                                         <label for="brand-1">
                                             <span></span>
                                             SAMSUNG
-                                            <small>(578)</small>
-                                        </label>
-                                    </div>
-                                    <div class="input-checkbox">
-                                        <input type="checkbox" id="brand-2" name="brand" value="LG">
-                                        <label for="brand-2">
-                                            <span></span>
-                                            LG
-                                            <small>(125)</small>
-                                        </label>
-                                    </div>
-                                    <div class="input-checkbox">
-                                        <input type="checkbox" id="brand-3" name="brand" value="SONY">
-                                        <label for="brand-3">
-                                            <span></span>
-                                            SONY
-                                            <small>(755)</small>
                                         </label>
                                     </div>
                                 </div>
@@ -164,16 +147,16 @@
                                 <label>
                                     Sort By:
                                     <select class="input-select">
-                                        <option value="0">Price Ascending</option>
-                                        <option value="1">Price Descending</option>
-                                    </select>
-                                </label>
+                                        <option value="price_asc" <c:if test="${param.sort == 'price_asc'}">selected</c:if>>Price Ascending</option>
+                                        <option value="price_desc" <c:if test="${param.sort == 'price_desc'}">selected</c:if>>Price Descending</option>
+                                        </select>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /store top filter -->
+                            <!-- /store top filter -->
 
-                        <!-- store products -->
-                        <div class="row">
+                            <!-- store products -->
+                            <div class="row">
                             <c:forEach var="product" items="${products}">
                                 <!-- product -->
                                 <div class="col-md-4 col-xs-6">
@@ -247,7 +230,7 @@
                                             // Preserve existing query parameters
                                             const urlParams = new URLSearchParams(window.location.search);
                                             for (const [key, value] of urlParams.entries()) {
-                                                if (key !== 'page') { // Exclude page parameter for now
+                                                if (key !== 'page' && key !== 'sort') { // Exclude page and sort parameters for now
                                                     params.set(key, value); // Update existing parameter
                                                 }
                                             }
@@ -264,11 +247,27 @@
                                             // Add or update the page parameter
                                             params.set('page', pageNumber);
 
+                                            // Add or update the sort parameter
+                                            const sortSelect = document.querySelector('.store-sort .input-select');
+                                            if (sortSelect) {
+                                                const sortValue = sortSelect.value;
+                                                params.set('sort', sortValue);
+                                            }
+
                                             // Construct new URL with parameters
                                             const newUrl = '?' + params.toString();
                                             window.location.href = newUrl;
                                             return false; // Prevent the default form submit
                                         }
+                                        // Add event listener to the sort select element
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            const sortSelect = document.querySelector('.store-sort .input-select');
+                                            if (sortSelect) {
+                                                sortSelect.addEventListener('change', function () {
+                                                    buildQuery();
+                                                });
+                                            }
+                                        });
         </script>
         <script>
             function formatNumberToVND(number) {
