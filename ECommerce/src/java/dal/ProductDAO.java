@@ -165,7 +165,32 @@ public class ProductDAO {
             }
         } catch (Exception e) {
             System.out.println(e);
-        } 
+        }
+        return list;
+    }
+
+    public List<Object[]> getCategoryProductCount() {
+        String query = "SELECT \n"
+                + "	C.name AS category_name,\n"
+                + "	COUNT(P.id) AS number_of_products\n"
+                + "FROM\n"
+                + "	Categories C JOIN Products P ON C.id = P.category_id\n"
+                + "GROUP BY C.name\n"
+                + "ORDER BY number_of_products DESC";
+        List<Object[]> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Object[] productList = new Object[2];
+                productList[0] = rs.getString("category_name");
+                productList[1] = rs.getString("number_of_products");
+                list.add(productList);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         return list;
     }
 

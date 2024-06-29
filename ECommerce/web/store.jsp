@@ -43,16 +43,20 @@
                             <!-- aside Widget -->
                             <div class="aside">
                                 <h3 class="aside-title">Categories</h3>
-                                <div class="checkbox-filter">
-                                    <div class="input-checkbox">
-                                        <input type="checkbox" id="category-1" name="category" value="Laptops">
-                                        <label for="category-1">
-                                            <span></span>
-                                            Laptops
-                                            <small>(120)</small>
-                                        </label>
+                                <c:forEach var="c" items="${requestScope.categoryList}">
+                                    <div class="checkbox-filter">
+                                        <div class="input-checkbox">
+                                            <input type="checkbox" id="${c[0]}" name="category" value="${c[0]}">
+                                            <label for="${c[0]}">
+                                                <span></span>
+                                                ${c[0]}
+                                                <small>(${c[1]})</small>
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
+                                </c:forEach>
+
+
                             </div>
                             <!-- /aside Widget -->
 

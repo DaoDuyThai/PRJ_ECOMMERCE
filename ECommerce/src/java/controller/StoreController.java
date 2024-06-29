@@ -63,7 +63,14 @@ public class StoreController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductDAO dao = new ProductDAO();
+        
+        //category product count
+        List<Object[]> categoryList = dao.getCategoryProductCount();
+        request.setAttribute("categoryList", categoryList);
+        
+        
 
+        //pagination
         String pageStr = request.getParameter("page");
         int pageNumber = 1;
         if (pageStr != null) {
@@ -78,6 +85,12 @@ public class StoreController extends HttpServlet {
         request.setAttribute("products", products);
         request.setAttribute("currentPage", pageNumber);
         request.setAttribute("totalPages", totalPages);
+        
+        
+        
+        
+        
+        
 
         request.getRequestDispatcher("store.jsp").forward(request, response);
     }
