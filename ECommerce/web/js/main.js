@@ -139,7 +139,7 @@
         noUiSlider.create(priceSlider, {
             start: [0, 100000000],
             connect: true,
-            step: 500000,
+            step: 1000000,
             range: {
                 'min': 0,
                 'max': 100000000
