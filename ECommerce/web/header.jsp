@@ -29,7 +29,7 @@
                 <!-- LOGO -->
                 <div class="col-md-3">
                     <div class="header-logo">
-                        <a href="index.html" class="logo">
+                        <a href="index" class="logo">
                             <img src="./img/logo.png" alt="">
                         </a>
                     </div>
@@ -119,13 +119,12 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="store.html">Hot Deals</a></li>
-                <li><a href="store.html">Categories</a></li>
-                <li><a href="store.html">Laptops</a></li>
-                <li><a href="store.html">Smartphones</a></li>
-                <li><a href="store.html">Cameras</a></li>
-                <li><a href="store.html">Accessories</a></li>
+                <li><a href="index">Home</a></li>
+                <li><a href="store?price-min=0&price-max=100000000&page=1&sort=price_asc">Hot Deals</a></li>
+                <li><a href="store?category=Laptop">Laptops</a></li>
+                <li><a href="store?category=Smartphone">Smartphones</a></li>
+                <li><a href="store?category=Camera">Cameras</a></li>
+                <li><a href="store?category=Accessories">Accessories</a></li>
             </ul>
             <!-- /NAV -->
         </div>
@@ -144,6 +143,7 @@
         // Add search input parameter if provided
         if (searchInput !== '') {
             params.set('search', searchInput);
+            params.set('sort', 'price_asc')
         }
 
         // Construct new URL with parameters

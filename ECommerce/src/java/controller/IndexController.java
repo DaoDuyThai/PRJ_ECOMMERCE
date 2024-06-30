@@ -63,27 +63,27 @@ public class IndexController extends HttpServlet {
         List<Object[]> getNewestProductList = dao.getNewestProducts();
         request.setAttribute("getNewestProductList", getNewestProductList);
 
-        List<Object[]> mostBoughtLaptopList = dao.getTop6MostBoughtProducts("Laptop");
+        List<Object[]> mostBoughtLaptopList = dao.getTopMostBoughtProductByCategory(6, "Laptop");
         request.setAttribute("mostBoughtLaptopList", mostBoughtLaptopList);
 
-        List<Object[]> mostBoughtSmartphoneList = dao.getTop6MostBoughtProducts("Smartphone");
+        List<Object[]> mostBoughtSmartphoneList = dao.getTopMostBoughtProductByCategory(6, "Smartphone");
         List<Object[]> firstSmartphoneList = mostBoughtSmartphoneList.subList(0, 3);
         request.setAttribute("firstSmartphoneList", firstSmartphoneList);
         List<Object[]> lastSmartphoneList = mostBoughtSmartphoneList.subList(3, 6);
         request.setAttribute("lastSmartphoneList", lastSmartphoneList);
 
-        List<Object[]> mostBoughtCameraList = dao.getTop6MostBoughtProducts("Camera");
+        List<Object[]> mostBoughtCameraList = dao.getTopMostBoughtProductByCategory(6, "Camera");
         List<Object[]> firstCameraList = mostBoughtCameraList.subList(0, 3);
         request.setAttribute("firstCameraList", firstCameraList);
         List<Object[]> lastCameraList = mostBoughtCameraList.subList(3, 6);
         request.setAttribute("lastCameraList", lastCameraList);
-        
-        List<Object[]> mostBoughtAccessoriesList = dao.getTop6MostBoughtProducts("Accessories");
+
+        List<Object[]> mostBoughtAccessoriesList = dao.getTopMostBoughtProductByCategory(6, "Accessories");
         List<Object[]> firstAccessoriesList = mostBoughtAccessoriesList.subList(0, 3);
         request.setAttribute("firstAccessoriesList", firstAccessoriesList);
         List<Object[]> lastAccessoriesList = mostBoughtAccessoriesList.subList(3, 6);
         request.setAttribute("lastAccessoriesList", lastAccessoriesList);
-        
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

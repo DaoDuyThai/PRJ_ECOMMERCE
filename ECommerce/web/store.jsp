@@ -126,52 +126,32 @@
                             <!-- aside Widget -->
                             <div class="aside">
                                 <h3 class="aside-title">Top selling</h3>
+                            <c:forEach var="p" items="${requestScope.topBoughtProducts}">
                                 <div class="product-widget">
                                     <div class="product-img">
-                                        <img src="./img/product01.png" alt="">
+                                        <img src="${p[3]}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">${p[4]}</p>
+                                        <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                        <h4 class="product-price vnd">${p[2]}</h4>
                                     </div>
                                 </div>
-
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product02.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product03.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /aside Widget -->
+                            </c:forEach>
                         </div>
-                        <!-- /ASIDE -->
+                        <!-- /aside Widget -->
+                    </div>
+                    <!-- /ASIDE -->
 
-                        <!-- STORE -->
-                        <div id="store" class="col-md-9">
-                            <!-- store top filter -->
-                            <div class="store-filter clearfix">
-                                <div class="store-sort">
-                                    <label>
-                                        Sort By:
-                                        <select class="input-select">
-                                            <option value="price_asc" <c:if test="${param.sort == 'price_asc'}">selected</c:if>>Price Ascending</option>
+                    <!-- STORE -->
+                    <div id="store" class="col-md-9">
+                        <!-- store top filter -->
+                        <div class="store-filter clearfix">
+                            <div class="store-sort">
+                                <label>
+                                    Sort By:
+                                    <select class="input-select">
+                                        <option value="price_asc" <c:if test="${param.sort == 'price_asc'}">selected</c:if>>Price Ascending</option>
                                         <option value="price_desc" <c:if test="${param.sort == 'price_desc'}">selected</c:if>>Price Descending</option>
                                         </select>
                                     </label>
@@ -181,17 +161,17 @@
 
                             <!-- store products -->
                             <div class="row">
-                            <c:forEach var="product" items="${products}">
+                            <c:forEach var="p" items="${productList}">
                                 <!-- product -->
                                 <div class="col-md-4 col-xs-6">
                                     <div class="product">
                                         <div class="product-img">
-                                            <img src="${product.image_url}" alt="">
+                                            <img src="${p[3]}" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <p class="product-category">Category</p>
-                                            <h3 class="product-name"><a href="#">${product.name}</a></h3>
-                                            <h4 class="product-price vnd">${product.price}</h4>
+                                            <p class="product-category">${p[4]}</p>
+                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h4 class="product-price vnd">${p[2]}</h4>
                                         </div>
                                         <div class="add-to-cart">
                                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
@@ -283,6 +263,7 @@
                                             window.location.href = newUrl;
                                             return false; // Prevent the default form submit
                                         }
+
                                         // Add event listener to the sort select element
                                         document.addEventListener('DOMContentLoaded', function () {
                                             const sortSelect = document.querySelector('.store-sort .input-select');

@@ -63,34 +63,53 @@ public class StoreController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductDAO dao = new ProductDAO();
-        
-        //category product count
-        List<Object[]> categoryList = dao.getCategoryProductCount();
-        request.setAttribute("categoryList", categoryList);
-        
-        
 
-        //pagination
-        String pageStr = request.getParameter("page");
-        int pageNumber = 1;
-        if (pageStr != null) {
-            pageNumber = Integer.parseInt(pageStr);
+        // Get query params
+        String category = request.getParameter("category");
+        String brand = request.getParameter("brand");
+        String priceMinStr = request.getParameter("price-min");
+        String priceMaxStr = request.getParameter("price-max");
+        String search = request.getParameter("search");
+        String sort = request.getParameter("sort");
+
+        int priceMin = 0;
+        int priceMax = 100000000;
+
+        // Convert price parameters to Long if provided
+        if (priceMinStr != null && !priceMinStr.isEmpty()) {
+            priceMin = Integer.parseInt(priceMinStr);
+        }
+        if (priceMaxStr != null && !priceMaxStr.isEmpty()) {
+            priceMax = Integer.parseInt(priceMaxStr);
+        }
+        if (sort == null) {
+            sort = "default";
         }
 
-        int totalProducts = dao.getTotalProducts();
-        int totalPages = (int) Math.ceil((double) totalProducts / PAGE_SIZE);
-        
-        List<Product> products = dao.getAllProducts(pageNumber, PAGE_SIZE);
+        // Category product count
+        List<Object[]> categoryList = dao.getCategoryProductCount();
+        request.setAttribute("categoryList", categoryList);
 
-        request.setAttribute("products", products);
-        request.setAttribute("currentPage", pageNumber);
+        // Pagination
+        String pageStr = request.getParameter("page");
+        int currentPage = 1;
+        if (pageStr != null) {
+            currentPage = Integer.parseInt(pageStr);
+        }
+
+        int totalProducts = dao.getTotalProducts(category, brand, priceMin, priceMax, search);
+        int totalPages = (int) Math.ceil((double) totalProducts / PAGE_SIZE);
+
+        List<Object[]> productList = dao.getFilteredAndSortedProducts(currentPage, PAGE_SIZE, category, brand, priceMin, priceMax, search, sort);
+
+        // Set attributes for the JSP
+        request.setAttribute("productList", productList);
+        request.setAttribute("currentPage", currentPage);
         request.setAttribute("totalPages", totalPages);
-        
-        
-        
-        
-        
-        
+
+        //Get top bought products
+        List<Object[]> topBoughtProducts = dao.getTopMostBoughtProducts(6);
+        request.setAttribute("topBoughtProducts", topBoughtProducts);
 
         request.getRequestDispatcher("store.jsp").forward(request, response);
     }
