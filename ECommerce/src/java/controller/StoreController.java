@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import model.Product;
 
@@ -89,6 +90,19 @@ public class StoreController extends HttpServlet {
         // Category product count
         List<Object[]> categoryList = dao.getCategoryProductCount();
         request.setAttribute("categoryList", categoryList);
+
+        //Brands
+        List<Object[]> brandList = new ArrayList<>();
+        brandList.add(new Object[]{"SAMSUNG"});
+        brandList.add(new Object[]{"APPLE"});
+        brandList.add(new Object[]{"ASUS"});
+        brandList.add(new Object[]{"DELL"});
+        brandList.add(new Object[]{"HP"});
+        brandList.add(new Object[]{"LENOVO"});
+        brandList.add(new Object[]{"SONY"});
+        brandList.add(new Object[]{"MICROSOFT"});
+        brandList.add(new Object[]{"HUAWEI"});
+        request.setAttribute("brandList", brandList);
 
         // Pagination
         String pageStr = request.getParameter("page");
