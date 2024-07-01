@@ -104,56 +104,5 @@
 
     // Input number
 
-
-    var priceInputMax = document.getElementById('price-max'),
-            priceInputMin = document.getElementById('price-min');
-
-    priceInputMax.addEventListener('change', function () {
-        updatePriceSlider($(this).parent(), this.value)
-    });
-
-    priceInputMin.addEventListener('change', function () {
-        updatePriceSlider($(this).parent(), this.value)
-    });
-
-    function updatePriceSlider(elem, value) {
-        if (elem.hasClass('price-min')) {
-            priceSlider.noUiSlider.set([value, null]);
-        } else if (elem.hasClass('price-max')) {
-            priceSlider.noUiSlider.set([null, value]);
-        }
-    }
-
-    var formatForSlider = {
-        from: function (formattedValue) {
-            return Number(formattedValue);
-        },
-        to: function (numericValue) {
-            return Math.round(numericValue);
-        }
-    };
-
-    // Price Slider
-    var priceSlider = document.getElementById('price-slider');
-    if (priceSlider) {
-        noUiSlider.create(priceSlider, {
-            start: [0, 100000000],
-            connect: true,
-            step: 1000000,
-            range: {
-                'min': 0,
-                'max': 100000000
-            },
-            format: formatForSlider,
-        });
-
-
-        priceSlider.noUiSlider.on('update', function (values, handle) {
-            var value = values[handle];
-            handle ? priceInputMax.value = value : priceInputMin.value = value
-        });
-    }
-    ;
-
 })(jQuery);
 
