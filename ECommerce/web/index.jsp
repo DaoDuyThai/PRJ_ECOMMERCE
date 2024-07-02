@@ -64,7 +64,7 @@
                             </div>
                             <div class="shop-body">
                                 <h3>Laptop<br>Collection</h3>
-                                <a href="store.html" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="store?category=Laptop" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="shop-body">
                                 <h3>Accessories<br>Collection</h3>
-                                <a href="store.html" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="store?category=Accessories" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="shop-body">
                                 <h3>Cameras<br>Collection</h3>
-                                <a href="store.html" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="store?category=Camera" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                                                 </div>
                                                 <div class="product-body">
                                                     <p class="product-category">${p[4]}</p>
-                                                    <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                                    <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
                                                     <h4 class="product-price vnd">${p[2]}</h4>
                                                 </div>
                                                 <div class="add-to-cart">
@@ -198,7 +198,7 @@
                             </ul>
                             <h2 class="text-uppercase">hot deal this week</h2>
                             <p>New Collection Up to 50% OFF</p>
-                            <a class="primary-btn cta-btn" href="#">Shop now</a>
+                            <a class="primary-btn cta-btn" href="store">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                                                 </div>
                                                 <div class="product-body">
                                                     <p class="product-category">${p[4]}</p>
-                                                    <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                                    <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
                                                     <h4 class="product-price vnd">${p[2]}</h4>
                                                 </div>
                                                 <div class="add-to-cart">
@@ -290,7 +290,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${p[4]}</p>
-                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
                                             <h4 class="product-price vnd">${p[2]}</h4>
                                         </div>
                                     </div>
@@ -307,7 +307,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${p[4]}</p>
-                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
                                             <h4 class="product-price vnd">${p[2]}</h4>
                                         </div>
                                     </div>
@@ -335,7 +335,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${p[4]}</p>
-                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
                                             <h4 class="product-price vnd">${p[2]}</h4>
                                         </div>
                                     </div>
@@ -352,7 +352,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${p[4]}</p>
-                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
                                             <h4 class="product-price vnd">${p[2]}</h4>
                                         </div>
                                     </div>
@@ -382,7 +382,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${p[4]}</p>
-                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
                                             <h4 class="product-price vnd">${p[2]}</h4>
                                         </div>
                                     </div>
@@ -399,7 +399,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${p[4]}</p>
-                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
                                             <h4 class="product-price vnd">${p[2]}</h4>
                                         </div>
                                     </div>

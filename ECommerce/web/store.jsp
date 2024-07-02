@@ -111,7 +111,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${p[4]}</p>
-                                            <h3 class="product-name"><a href="#">${p[1]}</a></h3>
+                                            <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
                                             <h4 class="product-price vnd">${p[2]}</h4>
                                         </div>
                                         <div class="add-to-cart">
