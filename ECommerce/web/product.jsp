@@ -60,19 +60,16 @@
                     <div class="col-md-5 col-md-push-2">
                         <div id="product-main-img">
                             <div class="product-preview">
-                                <img src="./img/product01.png" alt="">
+                                <img src="${requestScope.product[3]}" alt="">
                             </div>
-
                             <div class="product-preview">
-                                <img src="./img/product03.png" alt="">
+                                <img src="${requestScope.product[3]}" alt="">
                             </div>
-
                             <div class="product-preview">
-                                <img src="./img/product06.png" alt="">
+                                <img src="${requestScope.product[3]}" alt="">
                             </div>
-
                             <div class="product-preview">
-                                <img src="./img/product08.png" alt="">
+                                <img src="${requestScope.product[3]}" alt="">
                             </div>
                         </div>
                     </div>
@@ -82,19 +79,16 @@
                     <div class="col-md-2  col-md-pull-5">
                         <div id="product-imgs">
                             <div class="product-preview">
-                                <img src="./img/product01.png" alt="">
+                                <img src="${requestScope.product[3]}" alt="">
                             </div>
-
                             <div class="product-preview">
-                                <img src="./img/product03.png" alt="">
+                                <img src="${requestScope.product[3]}" alt="">
                             </div>
-
                             <div class="product-preview">
-                                <img src="./img/product06.png" alt="">
+                                <img src="${requestScope.product[3]}" alt="">
                             </div>
-
                             <div class="product-preview">
-                                <img src="./img/product08.png" alt="">
+                                <img src="${requestScope.product[3]}" alt="">
                             </div>
                         </div>
                     </div>
@@ -103,30 +97,21 @@
                     <!-- Product details -->
                     <div class="col-md-5">
                         <div class="product-details">
-                            <h2 class="product-name">product name goes here</h2>
+                            <h2 class="product-name">${requestScope.product[1]}</h2>
                             <div>
-                                <h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
-                                <span class="product-available">In Stock</span>
+                                <h3 class="product-price vnd">${requestScope.product[4]}</h3>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>${requestScope.product[2]}</p>
 
                             <div class="add-to-cart">
-                                <div class="qty-label">
-                                    Qty
-                                    <div class="input-number">
-                                        <input type="number">
-                                        <span class="qty-up">+</span>
-                                        <span class="qty-down">-</span>
-                                    </div>
-                                </div>
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <center>
+                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                </center>
                             </div>
 
                             <ul class="product-links">
-                                <li>Category:</li>
-                                <li><a href="store.html">Accessories</a></li>
+                                <li>${requestScope.product[5]}</li>
+                                <li><a href="store?category=${requestScope.product[5]}">Accessories</a></li>
                             </ul>
 
                             <ul class="product-links">
@@ -156,12 +141,7 @@
                                 <div id="tab1" class="tab-pane fade in active">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            <p>${requestScope.product[2]}
                                             </p>
                                         </div>
                                     </div>
@@ -191,87 +171,26 @@
                             <h3 class="title">Related Products</h3>
                         </div>
                     </div>
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product01.png" alt="">
-                                <div class="product-label">
-                                    <span class="sale">-30%</span>
+                    <c:forEach var="p" items="${requestScope.relatedProducts}">
+                        <!-- product -->
+                        <div class="col-md-3 col-xs-6">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="${p[3]}" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">${p[4]}</p>
+                                    <h3 class="product-name"><a href="product?id=${p[0]}">${p[1]}</a></h3>
+                                    <h4 class="product-price">${p[2]}</h4>
+                                </div>
+                                <div class="add-to-cart">
+                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                 </div>
                             </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
                         </div>
-                    </div>
-                    <!-- /product -->
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product02.png" alt="">
-                                <div class="product-label">
-                                    <span class="new">NEW</span>
-                                </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
-
+                        <!-- /product -->
+                    </c:forEach>
                     <div class="clearfix visible-sm visible-xs"></div>
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product03.png" alt="">
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product04.png" alt="">
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
-
                 </div>
                 <!-- /row -->
             </div>
@@ -291,26 +210,26 @@
         <script src="js/jquery.zoom.min.js"></script>
         <script src="js/main.js"></script>
         <script>
-		function formatNumberToVND(number) {
-			return number.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-		}
+            function formatNumberToVND(number) {
+                return number.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+            }
 
-		function formatVND() {
-			// Get all elements with the class name 'vnd'
-			const elements = document.getElementsByClassName('vnd');
+            function formatVND() {
+                // Get all elements with the class name 'vnd'
+                const elements = document.getElementsByClassName('vnd');
 
-			// Loop through the elements and format the content
-			for (let i = 0; i < elements.length; i++) {
-				const value = parseInt(elements[i].textContent, 10);
-				if (!isNaN(value)) {
-					elements[i].textContent = formatNumberToVND(value);
-				}
-			}
-		}
+                // Loop through the elements and format the content
+                for (let i = 0; i < elements.length; i++) {
+                    const value = parseInt(elements[i].textContent, 10);
+                    if (!isNaN(value)) {
+                        elements[i].textContent = formatNumberToVND(value);
+                    }
+                }
+            }
 
-		document.addEventListener('DOMContentLoaded', formatVND);
-	</script>
-        
+            document.addEventListener('DOMContentLoaded', formatVND);
+        </script>
+
     </body>
 
 </html>

@@ -303,24 +303,76 @@ public class ProductDAO {
         return list;
     }
 
+    public Object[] getProductById(int id) {
+        String query = "SELECT P.id, P.name, P.description, P.image_url, P.price, C.name AS category\n"
+                + "FROM Products P JOIN Categories C ON P.category_id = C.id\n"
+                + "WHERE P.id = ?";
+
+        Object[] product = new Object[6];
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                product[0] = rs.getInt("id");
+                product[1] = rs.getString("name");
+                product[2] = rs.getString("description");
+                product[3] = rs.getString("image_url");
+                product[4] = rs.getLong("price");
+                product[5] = rs.getString("category");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return product;
+    }
+
+    public List<Object[]> getProductByCategory(int number, String categoryName) {
+        String query = "SELECT TOP " + number + " \n"
+                + "P.id, P.name, P.description, P.image_url, P.price, C.name AS category\n"
+                + "FROM Products P JOIN Categories C ON P.category_id = C.id\n"
+                + "WHERE C.name = '" + categoryName + "' ";
+        List<Object[]> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Object[] productList = new Object[5];
+                productList[0] = rs.getInt("id");
+                productList[1] = rs.getString("name");
+                productList[2] = rs.getLong("price");
+                productList[3] = rs.getString("image_url");
+                productList[4] = rs.getString("category");
+                list.add(productList);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        List<Object[]> list = dao.getTopMostBoughtProducts(6);
-        for (Object[] product : list) {
-            int productId = (int) product[0];         // Assuming id is an int
-            String productName = (String) product[1]; // Assuming name is a String
-            long price = (long) product[2];           // Assuming price is a long
-            String imageUrl = (String) product[3];    // Assuming image_url is a String
-            String category = (String) product[4];    // Assuming category is a String
+        Object[] product = dao.getProductById(3);
+        System.out.println("" + product[0] + product[1]);
 
-            // Print each product's details
-            System.out.println("Product ID: " + productId);
-            System.out.println("Name: " + productName);
-            System.out.println("Price: " + price);
-            System.out.println("Image URL: " + imageUrl);
-            System.out.println("Category: " + category);
-            System.out.println("------------------------");
-        }
-
+//        List<Object[]> list = dao.getTopMostBoughtProducts(6);
+//        for (Object[] product : list) {
+//            int productId = (int) product[0];         // Assuming id is an int
+//            String productName = (String) product[1]; // Assuming name is a String
+//            long price = (long) product[2];           // Assuming price is a long
+//            String imageUrl = (String) product[3];    // Assuming image_url is a String
+//            String category = (String) product[4];    // Assuming category is a String
+//
+//            // Print each product's details
+//            System.out.println("Product ID: " + productId);
+//            System.out.println("Name: " + productName);
+//            System.out.println("Price: " + price);
+//            System.out.println("Image URL: " + imageUrl);
+//            System.out.println("Category: " + category);
+//            System.out.println("------------------------");
+//        }
     }
 }
