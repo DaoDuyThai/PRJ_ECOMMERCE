@@ -62,7 +62,7 @@
                     <div class="col-md-12">
                         <div class="newsletter">
                             <p><strong>UPDATE PROFILE</strong></p>
-                            <form>
+                            <form action="profile" method="post">
                                 <div class="row">
                                     <div class="label-auth">
                                         <b>Email</b>
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="row">
                                     <input id="new-password" name="new-password" class="input input-auth" type="password"
-                                           placeholder="Enter Your New Password" required>
+                                           placeholder="If you don't want to change password, you can leave this field alone!">
                                 </div>
                                 <div class="row">
                                     <div class="label-auth">
@@ -111,7 +111,10 @@
                                     <img id="avatar-thumbnail" width="200px" height="200px" src="${account.avatar_url}"/>
                                 </div>
                                 <div class="error-message">
-                                    <b>*Error Message</b>
+                                    <b>${errorMessage}</b>
+                                </div>
+                                <div class="success-message" style="color: green">
+                                    <b>${successMessage}</b>
                                 </div>
                                 <br />
                                 <input id="image-url" name="image-url" class="input input-auth" type="text"

@@ -89,6 +89,17 @@ public class AccountDAO {
         return "";
     }
 
+    public void updateProfile(String email, String password, String fullname, String avatar_url) {
+        String sql = "UPDATE ACCOUNTS SET password = '" + password + "', fullname = '" + fullname + "', avatar_url = '" + avatar_url + "' WHERE email = '" + email + "';";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
 //        List<Account> list = dao.getAllAccounts();
