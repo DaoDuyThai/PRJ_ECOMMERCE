@@ -110,8 +110,8 @@
                             </div>
 
                             <ul class="product-links">
-                                <li>${requestScope.product[5]}</li>
-                                <li><a href="store?category=${requestScope.product[5]}">Accessories</a></li>
+                                <li>Category: </li>
+                                <li><a href="store?category=${requestScope.product[5]}">${requestScope.product[5]}</a></li>
                             </ul>
 
                             <ul class="product-links">
