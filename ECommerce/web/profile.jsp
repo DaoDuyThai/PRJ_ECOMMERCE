@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="row">
                                     <input id="email" name="email" class="input input-auth" type="email"
-                                           placeholder="Enter Your Email" readonly>
+                                           placeholder="Enter Your Email" readonly value="${account.email}">
 
                                 </div>
                                 <div class="row">
@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="row">
                                     <input id="fullname" name="fullname" class="input input-auth" type="text"
-                                           placeholder="Enter Your Fullname" required>
+                                           placeholder="Enter Your Fullname" required value="${account.fullname}">
                                 </div>
                                 <div class="row">
                                     <div class="label-auth">
@@ -108,14 +108,14 @@
                                 <div class="row">
                                     <button type="button" id="upload_widget" class="cloudinary-button"
                                             style="background-color: #D10024; border: 0px;">Upload files</button>
-                                    <img id="avatar-thumbnail" width="200px" height="200px" src="https://res.cloudinary.com/dmqd2y3mp/image/upload/v1719281172/PRJ_ECOMMERCE/opvfjoatonnnolkpvvuc.jpg"/>
+                                    <img id="avatar-thumbnail" width="200px" height="200px" src="${account.avatar_url}"/>
                                 </div>
                                 <div class="error-message">
                                     <b>*Error Message</b>
                                 </div>
                                 <br />
                                 <input id="image-url" name="image-url" class="input input-auth" type="text"
-                                       placeholder="Image URL" style="display: none;" value="https://res.cloudinary.com/dmqd2y3mp/image/upload/v1719281172/PRJ_ECOMMERCE/opvfjoatonnnolkpvvuc.jpg">
+                                       placeholder="Image URL" style="display: none;" value="${account.avatar_url}">
                                 <button type="submit" class="newsletter-btn input-auth-btn">UPDATE</button>
                             </form>
                             <ul class="newsletter-follow">
