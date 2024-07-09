@@ -46,11 +46,36 @@ public class AccountDAO {
         return list;
     }
 
+    public Account login(String email, String password) {
+        String sql = "SELECT id, email, password, fullname, avatar_url, role, date_created FROM ACCOUNTS\n"
+                + "WHERE email = '" + email + "' AND password = '" + password + "'";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Account(
+                        rs.getInt("id"),
+                        rs.getString("email"),
+                        "xxxxxxxx",
+                        rs.getString("fullname"),
+                        rs.getString("avatar_url"),
+                        rs.getString("role"),
+                        rs.getString("date_created"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        List<Account> list = dao.getAllAccounts();
-        for (Account p : list) {
-            System.out.println(p.toString());
-        }
+//        List<Account> list = dao.getAllAccounts();
+//        for (Account p : list) {
+//            System.out.println(p.toString());
+//        }
+        System.out.println(dao.login("admin", "admin").toString());
     }
 }

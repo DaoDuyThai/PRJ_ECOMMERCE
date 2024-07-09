@@ -59,7 +59,7 @@
                     <div class="col-md-12">
                         <div class="newsletter">
                             <p><strong>SIGN IN</strong></p>
-                            <form>
+                            <form action="login" method="post">
                                 <div class="row">
                                     <div class="label-auth">
                                         <b>Email</b>
@@ -90,7 +90,7 @@
                                     </a>
                                 </div>
                                 <div class="error-message">
-                                    <b>*Error Message</b>
+                                    <b>${errorMessage}</b>
                                 </div>
                                 <br />
                                 <button type="submit" class="newsletter-btn input-auth-btn">Login</button>

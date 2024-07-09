@@ -11,10 +11,14 @@
                 <li><a href="https://codewithdt.com"><i class="fa fa-send"></i> CodewithDT</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class=""></i> Login</a></li>
-                <li><a href="#"><i class=""></i> Register</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-                <li><a href="#"><i class=""></i> Logout</a></li>
+                <c:if test="${account == null}">
+                    <li><a href="login"><i class=""></i> Login</a></li>
+                    <li><a href="#"><i class=""></i> Register</a></li>
+                    </c:if>
+                    <c:if test="${account != null}">
+                    <li><a href="#"><i class="fa fa-user-o"></i>${account.fullname}</a></li>
+                    <li><a href="login"><i class=""></i> Logout</a></li>
+                    </c:if>
             </ul>
         </div>
     </div>
