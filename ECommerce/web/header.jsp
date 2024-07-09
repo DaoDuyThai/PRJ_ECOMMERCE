@@ -16,7 +16,7 @@
                     <li><a href="register"><i class=""></i> Register</a></li>
                     </c:if>
                     <c:if test="${account != null}">
-                    <li><a href="#"><i class="fa fa-user-o"></i>${account.fullname}</a></li>
+                    <li><a href="profile"><i class="fa fa-user-o"></i>${account.fullname}</a></li>
                     <li><a href="login"><i class=""></i> Logout</a></li>
                     </c:if>
             </ul>

@@ -108,14 +108,14 @@
                                 <div class="row">
                                     <button type="button" id="upload_widget" class="cloudinary-button"
                                             style="background-color: #D10024; border: 0px;">Upload files</button>
-                                    <img id="avatar-thumbnail" width="200px" height="200px" />
+                                    <img id="avatar-thumbnail" width="200px" height="200px" src="https://res.cloudinary.com/dmqd2y3mp/image/upload/v1719281172/PRJ_ECOMMERCE/opvfjoatonnnolkpvvuc.jpg"/>
                                 </div>
                                 <div class="error-message">
                                     <b>*Error Message</b>
                                 </div>
                                 <br />
                                 <input id="image-url" name="image-url" class="input input-auth" type="text"
-                                       placeholder="Image URL" style="display: none;">
+                                       placeholder="Image URL" style="display: none;" value="https://res.cloudinary.com/dmqd2y3mp/image/upload/v1719281172/PRJ_ECOMMERCE/opvfjoatonnnolkpvvuc.jpg">
                                 <button type="submit" class="newsletter-btn input-auth-btn">UPDATE</button>
                             </form>
                             <ul class="newsletter-follow">
