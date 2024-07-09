@@ -70,12 +70,31 @@ public class AccountDAO {
         return null;
     }
 
+    public String register(String email, String password, String fullname, String avatar_url) {
+        String sql = "INSERT INTO ACCOUNTS(email, password, fullname, avatar_url, role) VALUES\n"
+                + "('" + email + "', '" + password + "', '" + fullname + "', '" + avatar_url + "', 'customer')";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 2627) {
+                return "Account existed";
+            } else {
+                System.out.println(e);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return "";
+    }
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
 //        List<Account> list = dao.getAllAccounts();
 //        for (Account p : list) {
 //            System.out.println(p.toString());
 //        }
-        System.out.println(dao.login("admin", "admin").toString());
+        System.out.println(dao.register("admin@admin.com", "password", "fullname", "avatar_url"));
     }
 }

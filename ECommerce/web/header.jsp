@@ -13,7 +13,7 @@
             <ul class="header-links pull-right">
                 <c:if test="${account == null}">
                     <li><a href="login"><i class=""></i> Login</a></li>
-                    <li><a href="#"><i class=""></i> Register</a></li>
+                    <li><a href="register"><i class=""></i> Register</a></li>
                     </c:if>
                     <c:if test="${account != null}">
                     <li><a href="#"><i class="fa fa-user-o"></i>${account.fullname}</a></li>
