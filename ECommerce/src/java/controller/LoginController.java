@@ -62,7 +62,7 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         session.invalidate();
-        doPost(request, response);
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     /**
