@@ -1977,18 +1977,10 @@ textarea.input {
   margin-top: 20px;
 }
 
-.newsletter form .error-message {
+.newsletter form .error-message b{
   text-align: start;
   justify-content: start;
   font-size: 12px;
-  color: red;
-}
-
-.newsletter form .success-message {
-  text-align: start;
-  justify-content: start;
-  font-size: 12px;
-  color: green;
 }
 
 .newsletter form .forgot-password{

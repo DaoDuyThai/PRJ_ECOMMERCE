@@ -82,7 +82,7 @@
 
                                 </div>
                                 <div class="row">
-                                    <a style="cursor: pointer;">
+                                    <a href="forgot-password" style="cursor: pointer;">
                                         <div class="forgot-password">
                                             Forgot password?
                                         </div>
@@ -90,7 +90,7 @@
                                     </a>
                                 </div>
                                 <div class="error-message">
-                                    <b>${errorMessage}</b>
+                                    <b style="color: red">${errorMessage}</b>
                                 </div>
                                 <br />
                                 <button type="submit" class="newsletter-btn input-auth-btn">Login</button>
@@ -98,7 +98,7 @@
                                 <br />
                                 <br />
                                 <div class="row">Don't have an account?
-                                    <a href="register.html" style="cursor: pointer;">
+                                    <a href="register" style="cursor: pointer;">
                                         Register here.
                                     </a>
                                 </div>

@@ -102,7 +102,7 @@
                                     <img id="avatar-thumbnail" width="200px" height="200px" src="https://res.cloudinary.com/dmqd2y3mp/image/upload/v1719281172/PRJ_ECOMMERCE/opvfjoatonnnolkpvvuc.jpg"/>
                                 </div>
                                 <div class="error-message">
-                                    <b>${errorMessage}</b>
+                                    <b style="color: red">${errorMessage}</b>
                                 </div>
                                 <br />
                                 <input id="image-url" name="image-url" class="input input-auth" type="text"
@@ -113,7 +113,7 @@
                                 <br />
                                 <br />
                                 <div class="row">Already have an account?
-                                    <a href="login.html" style="cursor: pointer;">
+                                    <a href="login" style="cursor: pointer;">
                                         Login here.
                                     </a>
                                 </div>
