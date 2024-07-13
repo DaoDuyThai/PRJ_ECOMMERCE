@@ -72,7 +72,7 @@ public class AccountDAO {
 
     public String register(String email, String password, String fullname, String avatar_url) {
         String sql = "INSERT INTO ACCOUNTS(email, password, fullname, avatar_url, role) VALUES\n"
-                + "('" + email + "', '" + password + "', '" + fullname + "', '" + avatar_url + "', 'customer')";
+                + "('" + email + "', '" + password + "', N'" + fullname + "', '" + avatar_url + "', 'customer')";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
@@ -90,7 +90,7 @@ public class AccountDAO {
     }
 
     public void updateProfile(String email, String password, String fullname, String avatar_url) {
-        String sql = "UPDATE ACCOUNTS SET password = '" + password + "', fullname = '" + fullname + "', avatar_url = '" + avatar_url + "' WHERE email = '" + email + "';";
+        String sql = "UPDATE ACCOUNTS SET password = '" + password + "', fullname = N'" + fullname + "', avatar_url = '" + avatar_url + "' WHERE email = '" + email + "';";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
