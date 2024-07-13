@@ -59,7 +59,7 @@
                     <div class="col-md-12">
                         <div class="newsletter">
                             <p><strong>RESET PASSWORD</strong></p>
-                            <form>
+                            <form action="forgot-password" method="post">
                                 <div class="row">
                                     <div class="label-auth">
                                         <b>Email</b>
@@ -72,7 +72,7 @@
 
                                 </div>
                                 <div class="error-message">
-                                    <b style="color: red">*Error Message</b>
+                                    <b style="color: red">${errorMessage}</b>
                                 </div>
                                 <br />
                                 <button type="submit" class="newsletter-btn input-auth-btn">Reset Password</button>
