@@ -111,10 +111,10 @@
                                     <img id="avatar-thumbnail" width="200px" height="200px" src="${account.avatar_url}"/>
                                 </div>
                                 <div class="error-message">
-                                    <b>${errorMessage}</b>
+                                    <b style="color: red">${errorMessage}</b>
                                 </div>
-                                <div class="success-message" style="color: green">
-                                    <b>${successMessage}</b>
+                                <div class="success-message" >
+                                    <b style="color: green">${successMessage}</b>
                                 </div>
                                 <br />
                                 <input id="image-url" name="image-url" class="input input-auth" type="text"

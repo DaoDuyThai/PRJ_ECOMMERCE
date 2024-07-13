@@ -1984,11 +1984,11 @@ textarea.input {
   color: red;
 }
 
-.newsletter form .error-message {
+.newsletter form .success-message {
   text-align: start;
   justify-content: start;
   font-size: 12px;
-  color: #4cae4c;
+  color: green;
 }
 
 .newsletter form .forgot-password{
