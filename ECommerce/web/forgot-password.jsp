@@ -74,16 +74,19 @@
                                 <div class="error-message">
                                     <b style="color: red">${errorMessage}</b>
                                 </div>
+                                <div class="success-message">
+                                    <b style="color: green">${successMessage}</b>
+                                </div>
                                 <br />
                                 <button type="submit" class="newsletter-btn input-auth-btn">Reset Password</button>
                                 <br />
                                 <br />
                                 <br />
                                 <div class="row">
-                                    <a href="login.html" style="cursor: pointer;">
+                                    <a href="login" style="cursor: pointer;">
                                         Login
                                     </a>or
-                                    <a href="register.html" style="cursor: pointer;">
+                                    <a href="register" style="cursor: pointer;">
                                         Register 
                                     </a>here.
                                 </div>

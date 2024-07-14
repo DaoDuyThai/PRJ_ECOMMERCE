@@ -95,8 +95,8 @@ public class ForgotPasswordController extends HttpServlet {
                 account.setPassword(newPassword);
                 dao.updateProfile(account.getEmail(), account.getPassword(), account.getFullname(), account.getAvatar_url());
                 try {
-//                    sendEmail(email, newPassword);
-                    request.setAttribute("successMessage", "New password has been sent to your email.");
+                    sendEmail(email, newPassword);
+                    request.setAttribute("successMessage", "New password has been sent to your email. <a href=\"login\">Login Here!</a>");
                 } catch (Exception e) {
                     errorMessage = "Error sending email: " + e.getMessage();
                     request.setAttribute("errorMessage", errorMessage);
@@ -120,6 +120,32 @@ public class ForgotPasswordController extends HttpServlet {
             sb.append(chars.charAt(rand.nextInt(chars.length())));
         }
         return sb.toString();
+    }
+    
+    private void sendEmail(String recipientEmail, String newPassword) throws MessagingException {
+        String fromEmail = "daoduythai.working@gmail.com"; // Replace with your email
+        String emailPassword = "hcffvkqpbwvuwmkh"; // Replace with your email password
+
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, emailPassword);
+            }
+        });
+
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(fromEmail));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+        message.setSubject("Your New Password");
+        message.setText("Your new password is: " + newPassword);
+
+        Transport.send(message);
     }
 
     /**
