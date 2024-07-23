@@ -1,6 +1,69 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@ page import="java.net.URLDecoder" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="dal.ProductDAO" %>
+<%@ page import="jakarta.servlet.http.Cookie" %>
+<%@ page import="jakarta.servlet.http.HttpServletRequest" %>
+<%@ page import="jakarta.servlet.http.HttpServletResponse" %>
+
+<%
+    // Retrieve the cart from cookies
+    Cookie[] cookies = request.getCookies();
+    String cart = "";
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("cart")) {
+                cart = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                break;
+            }
+        }
+    }
+
+    // Parse cart items
+    List<String[]> cartItems = new ArrayList<>();
+    if (!cart.isEmpty()) {
+        String[] items = cart.split(",");
+        for (String item : items) {
+            String[] parts = item.split(":");
+            String productId = parts[0];
+            String quantity = parts[1];
+            cartItems.add(new String[]{productId, quantity});
+        }
+    }
+
+    // Retrieve product details from ProductDAO
+    ProductDAO productDAO = new ProductDAO();
+    List<Object[]> productDetails = new ArrayList<>();
+    
+    int totalProducts = 0;
+    long subtotal = 0L;
+    
+    for (String[] cartItem : cartItems) {
+        int productId = Integer.parseInt(cartItem[0]);
+        Object[] product = productDAO.getProductById(productId);
+        if (product != null) {
+            int quantity = Integer.parseInt(cartItem[1]);
+            long price = (long) product[4];
+            
+            totalProducts += quantity;
+            subtotal += quantity * price;
+        
+            productDetails.add(new Object[]{
+                product[0],  // Product ID
+                product[1],  // Product Name
+                price,       // Product Price
+                cartItem[1], // Quantity
+                product[2],  // Product Description
+                product[3],  // Product Image URL
+                product[5]   // Product Category
+            });
+        }
+    }
+%>
+
 <header>
     <!-- TOP HEADER -->
     <div id="top-header">
@@ -14,11 +77,11 @@
                 <c:if test="${account == null}">
                     <li><a href="login"><i class=""></i> Login</a></li>
                     <li><a href="register"><i class=""></i> Register</a></li>
-                    </c:if>
-                    <c:if test="${account != null}">
+                </c:if>
+                <c:if test="${account != null}">
                     <li><a href="profile"><i class="fa fa-user-o"></i>${account.fullname}</a></li>
                     <li><a href="login"><i class=""></i> Logout</a></li>
-                    </c:if>
+                </c:if>
             </ul>
         </div>
     </div>
@@ -44,7 +107,7 @@
                 <div class="col-md-6">
                     <div class="header-search">
                         <form id="searchForm" onsubmit="return searchProducts()">
-                            <input id="searchInput" class="input" type="text" placeholder="Search here" style="width: calc(100% - 100px);border-radius: 40px 0px 0px 40px;" value="${param.search}" >
+                            <input id="searchInput" class="input" type="text" placeholder="Search here" style="width: calc(100% - 100px);border-radius: 40px 0px 0px 40px;" value="${param.search}">
                             <button type="submit" class="search-btn">Search</button>
                         </form>
                     </div>
@@ -59,64 +122,40 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">3</div>
+                                <div class="qty"><%= totalProducts %></div>
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="./img/product01.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="./img/product01.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="./img/product01.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="./img/product01.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
+                                    <%
+                                        for (Object[] product : productDetails) {
+                                            String productId = product[0].toString();
+                                            String productName = (String) product[1];
+                                            String productPrice = product[2].toString();
+                                            String quantity = (String) product[3];
+                                            String productDescription = (String) product[4];
+                                            String productImage = (String) product[5];
+                                            String productCategory = (String) product[6];
+                                    %>
 
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="./img/product02.png" alt="">
+                                            <img src="<%= productImage %>" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+                                            <h3 class="product-name"><a href="product?id=<%= productId %>"><%= productName %></a></h3>
+                                            <h4 class="product-price"><span class="qty"><%= quantity %>x</span><span class="vnd"><%= productPrice %></span></h4>
                                         </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
+                                        <a href="updatecart?action=delete&productId=<%= productId %>">
+                                            <button class="delete"><i class="fa fa-close"></i></button>
+                                        </a>
                                     </div>
+
+                                    <%
+                                        }
+                                    %>
                                 </div>
                                 <div class="cart-summary">
-                                    <h5>SUBTOTAL: $2940.00</h5>
+                                    <h5>SUBTOTAL: <span class="total-price vnd"><%= subtotal %></span></h5>
                                 </div>
                                 <div class="cart-btns">
                                     <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
@@ -175,7 +214,7 @@
         // Add search input parameter if provided
         if (searchInput !== '') {
             params.set('search', searchInput);
-            params.set('sort', 'price_asc')
+            params.set('sort', 'price_asc');
         }
 
         // Construct new URL with parameters

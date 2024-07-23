@@ -163,7 +163,7 @@ public class UpdateCart extends HttpServlet {
         if (referrer != null && !referrer.isEmpty()) {
             response.sendRedirect(referrer);
         } else {
-            response.sendRedirect("index.jsp"); // Fallback to a default page if the referrer is not available
+            response.sendRedirect("index"); // Fallback to a default page if the referrer is not available
         }
     }
 
