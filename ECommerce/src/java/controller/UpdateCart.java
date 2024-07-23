@@ -9,9 +9,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 /**
  *
@@ -55,7 +58,7 @@ public class UpdateCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        doPost(request, response);
     } 
 
     /** 
@@ -68,7 +71,71 @@ public class UpdateCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+         String productId = request.getParameter("productId");
+        String action = request.getParameter("action");
+
+        if (productId == null || productId.isEmpty() || action == null || action.isEmpty()) {
+            response.sendRedirect("index"); // Redirect to an error page if parameters are missing
+            return;
+        }
+
+        Cookie[] cookies = request.getCookies();
+        String cart = "";
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("cart")) {
+                    cart = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                    break;
+                }
+            }
+        }
+
+        String newCart = "";
+        String[] items = cart.split(",");
+        for (int i = 0; i < items.length; i++) {
+            String item = items[i];
+            if (item.isEmpty()) {
+                continue;
+            }
+
+            String[] parts = item.split(":");
+            String id = parts[0];
+            int qty = Integer.parseInt(parts[1]);
+
+            if (id.equals(productId)) {
+                switch (action) {
+                    case "increase":
+                        qty++;
+                        break;
+                    case "decrease":
+                        qty--;
+                        if (qty <= 0) {
+                            continue; // Skip adding this item if the quantity is zero or less
+                        }
+                        break;
+                    case "delete":
+                        continue; // Skip adding this item to the new cart
+                }
+            }
+
+            if (!newCart.isEmpty()) {
+                newCart += ",";
+            }
+            newCart += id + ":" + qty;
+        }
+
+        Cookie cartCookie = new Cookie("cart", URLEncoder.encode(newCart, "UTF-8"));
+        cartCookie.setMaxAge(60 * 60 * 24 * 7); // 1 week
+        response.addCookie(cartCookie);
+
+        // Redirect back to the referring page
+        String referrer = request.getHeader("referer");
+        if (referrer != null && !referrer.isEmpty()) {
+            response.sendRedirect(referrer);
+        } else {
+            response.sendRedirect("test.jsp"); // Fallback to a default page if the referrer is not available
+        }
     }
 
     /** 
