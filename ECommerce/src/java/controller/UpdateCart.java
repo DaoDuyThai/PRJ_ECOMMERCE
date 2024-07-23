@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controller;
 
+import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,36 +20,39 @@ import java.net.URLEncoder;
  *
  * @author DUYTHAI
  */
-@WebServlet(name="UpdateCart", urlPatterns={"/updatecart"})
+@WebServlet(name = "UpdateCart", urlPatterns = {"/updatecart"})
 public class UpdateCart extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateCart</title>");  
+            out.println("<title>Servlet UpdateCart</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateCart at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet UpdateCart at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -57,12 +60,13 @@ public class UpdateCart extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         doPost(request, response);
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -70,12 +74,27 @@ public class UpdateCart extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-         String productId = request.getParameter("productId");
+            throws ServletException, IOException {
+        String productId = request.getParameter("productId");
         String action = request.getParameter("action");
-
         if (productId == null || productId.isEmpty() || action == null || action.isEmpty()) {
             response.sendRedirect("index"); // Redirect to an error page if parameters are missing
+            return;
+        }
+
+        int id;
+        try {
+            id = Integer.parseInt(productId);
+        } catch (NumberFormatException e) {
+            response.sendRedirect("index"); // Redirect to an error page if productId is invalid
+            return;
+        }
+
+        ProductDAO productDAO = new ProductDAO();
+        Object[] product = productDAO.getProductById(id);
+
+        if (product == null || product[0] == null) {
+            response.sendRedirect("index"); // Redirect to an error page if product does not exist
             return;
         }
 
@@ -91,19 +110,21 @@ public class UpdateCart extends HttpServlet {
             }
         }
 
-        String newCart = "";
         String[] items = cart.split(",");
-        for (int i = 0; i < items.length; i++) {
-            String item = items[i];
+        StringBuilder newCart = new StringBuilder();
+        boolean itemFound = false;
+
+        for (String item : items) {
             if (item.isEmpty()) {
                 continue;
             }
 
             String[] parts = item.split(":");
-            String id = parts[0];
+            String idStr = parts[0];
             int qty = Integer.parseInt(parts[1]);
 
-            if (id.equals(productId)) {
+            if (idStr.equals(productId)) {
+                itemFound = true;
                 switch (action) {
                     case "increase":
                         qty++;
@@ -119,13 +140,21 @@ public class UpdateCart extends HttpServlet {
                 }
             }
 
-            if (!newCart.isEmpty()) {
-                newCart += ",";
+            if (newCart.length() > 0) {
+                newCart.append(",");
             }
-            newCart += id + ":" + qty;
+            newCart.append(idStr).append(":").append(qty);
         }
 
-        Cookie cartCookie = new Cookie("cart", URLEncoder.encode(newCart, "UTF-8"));
+        // If the item was not found in the cart and the action is to increase, add it with qty 1
+        if (!itemFound && action.equals("increase")) {
+            if (newCart.length() > 0) {
+                newCart.append(",");
+            }
+            newCart.append(productId).append(":1");
+        }
+
+        Cookie cartCookie = new Cookie("cart", URLEncoder.encode(newCart.toString(), "UTF-8"));
         cartCookie.setMaxAge(60 * 60 * 24 * 7); // 1 week
         response.addCookie(cartCookie);
 
@@ -134,12 +163,13 @@ public class UpdateCart extends HttpServlet {
         if (referrer != null && !referrer.isEmpty()) {
             response.sendRedirect(referrer);
         } else {
-            response.sendRedirect("test.jsp"); // Fallback to a default page if the referrer is not available
+            response.sendRedirect("index.jsp"); // Fallback to a default page if the referrer is not available
         }
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

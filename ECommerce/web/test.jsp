@@ -2,8 +2,12 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.StringTokenizer" %>
+<%@ page import="jakarta.servlet.http.Cookie" %>
+<%@ page import="jakarta.servlet.http.HttpServletRequest" %>
+<%@ page import="jakarta.servlet.http.HttpServletResponse" %>
 
 <%
+    // Retrieve the cart from cookies
     Cookie[] cookies = request.getCookies();
     String cart = "";
     if (cookies != null) {
@@ -15,6 +19,7 @@
         }
     }
 
+    // Parse cart items
     List<String[]> cartItems = new ArrayList<>();
     if (!cart.isEmpty()) {
         StringTokenizer items = new StringTokenizer(cart, ",");
@@ -35,20 +40,27 @@
     </head>
     <body>
         <h1>Your Cart</h1>
-        <a href="addtocart?action=increase&productId=a">Increase</a>
-        <a href="addtocart?action=decrease&productId=a">Decrease</a>
-        <a href="addtocart?action=delete&productId="a>Delete</a>
         <table border="1">
             <tr>
                 <th>Product ID</th>
                 <th>Quantity</th>
+                <th>Actions</th>
             </tr>
             <%
                 for (String[] item : cartItems) {
-                    out.println("<tr>");
-                    out.println("<td>" + item[0] + "</td>");
-                    out.println("<td>" + item[1] + "</td>");
-                    out.println("</tr>");
+                    String productId = item[0];
+                    String quantity = item[1];
+            %>
+            <tr>
+                <td><%= productId %></td>
+                <td><%= quantity %></td>
+                <td>
+                    <a href="updatecart?action=increase&productId=1">Increase</a> |
+                    <a href="updatecart?action=decrease&productId=1">Decrease</a> |
+                    <a href="updatecart?action=delete&productId=1">Delete</a>
+                </td>
+            </tr>
+            <%
                 }
             %>
         </table>
