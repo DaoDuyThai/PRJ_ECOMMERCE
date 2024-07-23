@@ -105,7 +105,10 @@
 
                             <div class="add-to-cart">
                                 <center>
-                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                    <a href="updatecart?action=increase&productId=${requestScope.product[0]}">
+                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+
+                                    </a>
                                 </center>
                             </div>
 
@@ -184,7 +187,9 @@
                                     <h4 class="product-price">${p[2]}</h4>
                                 </div>
                                 <div class="add-to-cart">
-                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                    <a href="updatecart?action=increase&productId=${p[0]}">
+                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
