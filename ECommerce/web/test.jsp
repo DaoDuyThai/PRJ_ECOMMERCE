@@ -1,52 +1,57 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-      pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.net.URLDecoder" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.StringTokenizer" %>
+
+<%
+    Cookie[] cookies = request.getCookies();
+    String cart = "";
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("cart")) {
+                cart = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                break;
+            }
+        }
+    }
+
+    List<String[]> cartItems = new ArrayList<>();
+    if (!cart.isEmpty()) {
+        StringTokenizer items = new StringTokenizer(cart, ",");
+        while (items.hasMoreTokens()) {
+            String item = items.nextToken();
+            StringTokenizer product = new StringTokenizer(item, ":");
+            String productId = product.nextToken();
+            String quantity = product.nextToken();
+            cartItems.add(new String[]{productId, quantity});
+        }
+    }
+%>
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Pagination Example</title>
-  </head>
-  <body>
-    <%! 
-      // Function to change the value of a parameter in the current URL
-      String changeValue(String paramName, String paramValue, javax.servlet.http.HttpServletRequest request) throws java.io.UnsupportedEncodingException {
-          StringBuilder newUrl = new StringBuilder(request.getRequestURL().toString());
-          String queryString = request.getQueryString();
-          boolean paramExists = false;
-          
-          if (queryString != null && !queryString.isEmpty()) {
-              String[] params = queryString.split("&");
-              for (int i = 0; i < params.length; i++) {
-                  if (params[i].startsWith(paramName + "=")) {
-                      params[i] = paramName + "=" + java.net.URLEncoder.encode(paramValue, "UTF-8");
-                      paramExists = true;
-                  }
-              }
-              newUrl.append("?").append(String.join("&", params));
-          } 
-          
-          if (!paramExists) {
-              if (queryString != null && !queryString.isEmpty()) {
-                  newUrl.append("&");
-              } else {
-                  newUrl.append("?");
-              }
-              newUrl.append(paramName).append("=").append(java.net.URLEncoder.encode(paramValue, "UTF-8"));
-          }
-
-          return newUrl.toString();
-      }
-    %>
-    
-    <%
-      try {
-          // Example usage of the changeValue function
-          String newUrl = changeValue("page", "3", request);
-          out.println("New URL: " + newUrl);
-      } catch (Exception e) {
-          out.println("Error: " + e.getMessage());
-      }
-    %>
-  </body>
+    <head>
+        <title>Your Cart</title>
+    </head>
+    <body>
+        <h1>Your Cart</h1>
+        <a href="addtocart?action=increase&productId=a">Increase</a>
+        <a href="addtocart?action=decrease&productId=a">Decrease</a>
+        <a href="addtocart?action=delete&productId="a>Delete</a>
+        <table border="1">
+            <tr>
+                <th>Product ID</th>
+                <th>Quantity</th>
+            </tr>
+            <%
+                for (String[] item : cartItems) {
+                    out.println("<tr>");
+                    out.println("<td>" + item[0] + "</td>");
+                    out.println("<td>" + item[1] + "</td>");
+                    out.println("</tr>");
+                }
+            %>
+        </table>
+        <a href="checkout.jsp">Proceed to Checkout</a>
+    </body>
 </html>
