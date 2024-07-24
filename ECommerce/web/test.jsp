@@ -46,6 +46,7 @@
                 product[2],  // Product Description
                 product[3],  // Product Image URL
                 product[5]   // Product Category
+                
             });
         }
     }

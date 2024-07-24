@@ -39,7 +39,9 @@
     List<Object[]> productDetails = new ArrayList<>();
     
     int totalProducts = 0;
+    long totalItemPrice = 0L;
     long subtotal = 0L;
+    
     
     for (String[] cartItem : cartItems) {
         int productId = Integer.parseInt(cartItem[0]);
@@ -49,6 +51,7 @@
             long price = (long) product[4];
             
             totalProducts += quantity;
+            totalItemPrice = quantity * price;
             subtotal += quantity * price;
         
             productDetails.add(new Object[]{
@@ -58,7 +61,8 @@
                 cartItem[1], // Quantity
                 product[2],  // Product Description
                 product[3],  // Product Image URL
-                product[5]   // Product Category
+                product[5],  // Product Category
+                totalItemPrice  //Total item price
             });
         }
     }
@@ -135,6 +139,7 @@
                                             String productDescription = (String) product[4];
                                             String productImage = (String) product[5];
                                             String productCategory = (String) product[6];
+                                            String totalPrice = product[7].toString();
                                     %>
 
                                     <div class="product-widget">
@@ -147,7 +152,7 @@
                                         </div>
                                         <a href="updatecart?action=delete&productId=<%= productId %>">
                                             <button class="delete"><i class="fa fa-close"></i></button>
-                                        </a>
+                                        </a> 
                                     </div>
 
                                     <%
