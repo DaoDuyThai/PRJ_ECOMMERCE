@@ -77,11 +77,11 @@
                 <c:if test="${account == null}">
                     <li><a href="login"><i class=""></i> Login</a></li>
                     <li><a href="register"><i class=""></i> Register</a></li>
-                </c:if>
-                <c:if test="${account != null}">
+                    </c:if>
+                    <c:if test="${account != null}">
                     <li><a href="profile"><i class="fa fa-user-o"></i>${account.fullname}</a></li>
                     <li><a href="login"><i class=""></i> Logout</a></li>
-                </c:if>
+                    </c:if>
             </ul>
         </div>
     </div>
@@ -158,7 +158,12 @@
                                     <h5>SUBTOTAL: <span class="total-price vnd"><%= subtotal %></span></h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                    <c:if test="${account == null}">
+                                        <a href="login">Login to continue <i class="fa fa-arrow-circle-right"></i></a>
+                                        </c:if>
+                                        <c:if test="${account != null}">
+                                        <a href="checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                        </c:if>
                                 </div>
                             </div>
                         </div>
