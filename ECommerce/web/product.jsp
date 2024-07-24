@@ -134,7 +134,7 @@
                         <div id="product-tab">
                             <!-- product tab nav -->
                             <ul class="tab-nav">
-                                <li class="active"><a data-toggle="tab" href="#tab1">Details</a></li>
+                                <li class="active">Details</li>
                             </ul>
                             <!-- /product tab nav -->
 

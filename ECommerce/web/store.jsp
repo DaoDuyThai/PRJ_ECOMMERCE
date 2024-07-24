@@ -126,15 +126,15 @@
                         <div class="store-filter clearfix">
                             <ul class="store-pagination">
                                 <c:if test="${currentPage > 1}">
-                                    <li><a href="#" onclick="return buildQuery(${currentPage - 1});"><i class="fa fa-angle-left"></i></a></li>
+                                    <li><a  onclick="return buildQuery(${currentPage - 1});"><i class="fa fa-angle-left"></i></a></li>
                                         </c:if>
                                         <c:forEach var="i" begin="1" end="${totalPages}">
                                     <li class="${i == currentPage ? 'active' : ''}">
-                                        <a href="#" onclick="return buildQuery(${i});">${i}</a>
+                                        <a  onclick="return buildQuery(${i});">${i}</a>
                                     </li>
                                 </c:forEach>
                                 <c:if test="${currentPage < totalPages}">
-                                    <li><a href="#" onclick="return buildQuery(${currentPage + 1});"><i class="fa fa-angle-right"></i></a></li>
+                                    <li><a  onclick="return buildQuery(${currentPage + 1});"><i class="fa fa-angle-right"></i></a></li>
                                         </c:if>
                             </ul>
                         </div>
