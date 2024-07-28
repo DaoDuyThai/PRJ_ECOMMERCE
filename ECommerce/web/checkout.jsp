@@ -54,122 +54,133 @@
         <div class="section">
             <!-- container -->
             <div class="container">
-                <!-- row -->
-                <div class="row">
+                <form action="checkout" method="post">
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-7">
+                            <!-- Billing Details -->
+                            <div class="billing-details">
+                                <div class="section-title">
+                                    <h3 class="title">Billing</h3>
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="text" name="fullname" placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="email" name="email" placeholder="Email" required>
+                                </div>
 
-                    <div class="col-md-7">
-                        <!-- Billing Details -->
-                        <div class="billing-details">
-                            <div class="section-title">
-                                <h3 class="title">Billing</h3>
+                                <div class="form-group">
+                                    <input class="input" type="tel" name="tel" placeholder="Telephone" required>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="fullname" placeholder="Full Name">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="email" name="email" placeholder="Email">
-                            </div>
+                            <!-- /Billing Details -->
 
-                            <div class="form-group">
-                                <input class="input" type="tel" name="tel" placeholder="Telephone">
+                            <!-- Shipping Details -->
+                            <div class="shiping-details">
+                                <div class="section-title">
+                                    <h3 class="title">Shipping address</h3>
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="text" name="address" placeholder="Address" required>
+                                </div>
                             </div>
+                            <!-- /Shipping Details -->
+
+                            <!-- Order notes -->
+                            <div class="order-notes">
+                                <textarea class="input" placeholder="Order Notes"></textarea>
+                            </div>
+                            <!-- /Order notes -->
                         </div>
-                        <!-- /Billing Details -->
 
-                        <!-- Shipping Details -->
-                        <div class="shiping-details">
-                            <div class="section-title">
-                                <h3 class="title">Shipping address</h3>
+                        <!-- Order Details -->
+                        <div class="col-md-5 order-details">
+                            <div class="section-title text-center">
+                                <h3 class="title">Your Order</h3>
                             </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="address" placeholder="Address">
-                            </div>
-                        </div>
-                        <!-- /Shipping Details -->
-
-                        <!-- Order notes -->
-                        <div class="order-notes">
-                            <textarea class="input" placeholder="Order Notes"></textarea>
-                        </div>
-                        <!-- /Order notes -->
-                    </div>
-
-                    <!-- Order Details -->
-                    <div class="col-md-5 order-details">
-                        <div class="section-title text-center">
-                            <h3 class="title">Your Order</h3>
-                        </div>
-                        <div class="order-summary">
-                            <div class="order-col">
-                                <div><strong>PRODUCT</strong></div>
-                                <div><strong>TOTAL</strong></div>
-                            </div>
-                            <div class="order-products">
+                            <div class="order-summary">
                                 <div class="order-col">
-                                    <div>1x Product Name Goes Here</div>
-                                    <div>$980.00</div>
+                                    <div><strong>PRODUCT</strong></div>
+                                    <div><strong>TOTAL</strong></div>
+                                </div>
+                                <div class="order-products">
+                                    <%
+                                            for (Object[] product : productDetails) {
+                                                String productId = product[0].toString();
+                                                String productName = (String) product[1];
+                                                String productPrice = product[2].toString();
+                                                String quantity = (String) product[3];
+                                                String productDescription = (String) product[4];
+                                                String productImage = (String) product[5];
+                                                String productCategory = (String) product[6];
+                                                String totalPrice = product[7].toString();
+                                    %>
+                                    <div class="order-col">
+                                        <div><%= quantity%>x <%= productName%></div>
+                                        <div class="vnd"><%= totalPrice%></div>
+                                    </div>  
+                                    <%
+                                            }
+                                    %>
                                 </div>
                                 <div class="order-col">
-                                    <div>2x Product Name Goes Here</div>
-                                    <div>$980.00</div>
+                                    <div>Shiping</div>
+                                    <div><strong>FREE</strong></div>
+                                </div>
+                                <div class="order-col">
+                                    <div><strong>TOTAL</strong></div>
+                                    <div><strong class="order-total vnd"><%= subtotal %></strong></div>
                                 </div>
                             </div>
-                            <div class="order-col">
-                                <div>Shiping</div>
-                                <div><strong>FREE</strong></div>
+                            <div class="payment-method">
+                                <div class="input-radio">
+                                    <input type="radio" name="payment" id="payment-1" checked>
+                                    <label for="payment-1">
+                                        <span></span>
+                                        Cash On Delivery
+                                    </label>
+                                    <div class="caption">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                                <div class="input-radio">
+                                    <input type="radio" name="payment" id="payment-2">
+                                    <label for="payment-2">
+                                        <span></span>
+                                        Direct Bank Transfer
+                                    </label>
+                                    <div class="caption">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                                <div class="input-radio">
+                                    <input type="radio" name="payment" id="payment-3">
+                                    <label for="payment-3">
+                                        <span></span>
+                                        Paypal System
+                                    </label>
+                                    <div class="caption">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="order-col">
-                                <div><strong>TOTAL</strong></div>
-                                <div><strong class="order-total">$2940.00</strong></div>
-                            </div>
-                        </div>
-                        <div class="payment-method">
-                            <div class="input-radio">
-                                <input type="radio" name="payment" id="payment-1">
-                                <label for="payment-1">
+                            <div class="input-checkbox">
+                                <input type="checkbox" id="terms">
+                                <label for="terms">
                                     <span></span>
-                                    Direct Bank Transfer
+                                    I've read and accept the <a href="#">terms & conditions</a>
                                 </label>
-                                <div class="caption">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                            <div class="input-radio">
-                                <input type="radio" name="payment" id="payment-2">
-                                <label for="payment-2">
-                                    <span></span>
-                                    Cheque Payment
-                                </label>
-                                <div class="caption">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                            <div class="input-radio">
-                                <input type="radio" name="payment" id="payment-3">
-                                <label for="payment-3">
-                                    <span></span>
-                                    Paypal System
-                                </label>
-                                <div class="caption">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
+                            </div> 
+                                <button style="width: 100%" type="submit" class="primary-btn order-submit">Place order</button>
                         </div>
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="terms">
-                            <label for="terms">
-                                <span></span>
-                                I've read and accept the <a href="#">terms & conditions</a>
-                            </label>
-                        </div>
-                        <a href="#" class="primary-btn order-submit">Place order</a>
+                        <!-- /Order Details -->
                     </div>
-                    <!-- /Order Details -->
-                </div>
-                <!-- /row -->
+                    <!-- /row -->
+                </form>
             </div>
             <!-- /container -->
         </div>
