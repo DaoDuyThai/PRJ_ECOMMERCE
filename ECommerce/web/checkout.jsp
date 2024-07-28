@@ -71,7 +71,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="input" type="tel" name="tel" placeholder="Telephone" required>
+                                    <input class="input" type="text" name="tel" placeholder="Telephone" required>
                                 </div>
                             </div>
                             <!-- /Billing Details -->

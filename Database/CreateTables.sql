@@ -54,6 +54,8 @@ CREATE TABLE Orders (
   account_id INT NOT NULL,
   total_price BIGINT NOT NULL,
   delivery_address NVARCHAR(255) NOT NULL,
+  receiver_name NVARCHAR(255) NOT NULL,
+  receiver_phone NVARCHAR(20) NOT NULL,
   [status] NVARCHAR(50) NOT NULL,
   note NVARCHAR(MAX),
   date_created DATETIME DEFAULT GETDATE(),

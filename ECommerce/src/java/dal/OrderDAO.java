@@ -35,6 +35,8 @@ public class OrderDAO {
                         rs.getInt("account_id"),
                         rs.getLong("total_price"),
                         rs.getString("delivery_address"),
+                        rs.getString("receiver_name"),
+                        rs.getString("receiver_phone"),
                         rs.getString("status"),
                         rs.getString("note"),
                         rs.getString("date_created")

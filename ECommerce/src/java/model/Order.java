@@ -14,6 +14,8 @@ public class Order {
     int account_id;
     long total_price;
     String delivery_address;
+    String receiver_name;
+    String receiver_phone;
     String status;
     String note;
     String date_created;
@@ -21,11 +23,13 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, int account_id, long total_price, String delivery_address, String status, String note, String date_created) {
+    public Order(int id, int account_id, long total_price, String delivery_address, String receiver_name, String receiver_phone, String status, String note, String date_created) {
         this.id = id;
         this.account_id = account_id;
         this.total_price = total_price;
         this.delivery_address = delivery_address;
+        this.receiver_name = receiver_name;
+        this.receiver_phone = receiver_phone;
         this.status = status;
         this.note = note;
         this.date_created = date_created;
@@ -63,6 +67,22 @@ public class Order {
         this.delivery_address = delivery_address;
     }
 
+    public String getReceiver_name() {
+        return receiver_name;
+    }
+
+    public void setReceiver_name(String receiver_name) {
+        this.receiver_name = receiver_name;
+    }
+
+    public String getReceiver_phone() {
+        return receiver_phone;
+    }
+
+    public void setReceiver_phone(String receiver_phone) {
+        this.receiver_phone = receiver_phone;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -89,7 +109,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", account_id=" + account_id + ", total_price=" + total_price + ", delivery_address=" + delivery_address + ", status=" + status + ", note=" + note + ", date_created=" + date_created + '}';
+        return "Order{" + "id=" + id + ", account_id=" + account_id + ", total_price=" + total_price + ", delivery_address=" + delivery_address + ", receiver_name=" + receiver_name + ", receiver_phone=" + receiver_phone + ", status=" + status + ", note=" + note + ", date_created=" + date_created + '}';
     }
 
 }

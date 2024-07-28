@@ -92,28 +92,28 @@ VALUES
 GO
 
 -- Insert into the Orders table
-INSERT INTO Orders (account_id, total_price, delivery_address, [status], note)
+INSERT INTO Orders (account_id, total_price, delivery_address, receiver_name, receiver_phone, [status], note)
 VALUES
-    (2, 262000000, '123 Main Street, Hanoi', 'Processing', 'Please deliver during weekdays.'),
-    (3, 234000000, '456 Nguyen Hue Street, Ho Chi Minh City', 'Shipped', 'Delivery expected by end of week.'),
-    (5, 117000000, '789 Tran Hung Dao Avenue, Da Nang', 'Processing', 'Contact recipient before delivery.'),
-    (6, 167000000, '567 Le Loi Boulevard, Hue', 'Delivered', 'Left at front door.'),
-    (7, 310000000, '999 Phan Chu Trinh Street, Nha Trang', 'Processing', 'Handle with care.'),
-    (5, 350000000, '888 Nguyen Trai Road, Can Tho', 'Shipped', 'Delivery instructions included.'),
-    (6, 270000000, '222 Ly Thai To Street, Hai Phong', 'Processing', 'Contact recipient.'),
-    (5, 68000000, '333 Vo Van Tan Street, Vung Tau', 'Delivered', 'Signed by recipient.'),
-    (6, 66000000, '444 Nguyen Dinh Chieu Road, Quy Nhon', 'Processing', 'Call before delivery.'),
-    (6, 116000000, '555 Tran Phu Street, Phu Quoc', 'Shipped', 'Handle with care.'),
-    (5, 85000000, '666 Dien Bien Phu Street, Buon Ma Thuot', 'Processing', 'Call recipient on delivery.'),
-    (2, 95000000, '777 Nguyen Van Linh Street, Can Gio', 'Delivered', 'Left at gate.'),
-    (5, 107000000, '111 Vo Thi Sau Avenue, Vung Tau', 'Processing', 'Delivery expected today.'),
-    (6, 61000000, '222 Ton Duc Thang Road, Ha Long', 'Shipped', 'Contact recipient.'),
-    (7, 150000000, '333 Le Duan Street, Rach Gia', 'Processing', 'Leave at front desk.'),
-    (2, 170000000, '444 Tran Quoc Toan Boulevard, Tam Ky', 'Delivered', 'Signed by security.'),
-    (5, 115000000, '555 Truong Sa Street, Con Dao', 'Processing', 'Handle with care.'),
-    (6, 27000000, '666 Nguyen Trai Avenue, Soc Trang', 'Shipped', 'Delivery instructions included.'),
-    (7, 8000000, '777 Tran Hung Dao Street, Long Xuyen', 'Processing', 'Call recipient.'),
-    (5, 24000000, '888 Ly Thuong Kiet Road, Dong Hoi', 'Delivered', 'Left at front door.');
+    (2, 262000000, '123 Main Street, Hanoi', 'codewithdt', '+84 79 6428 094', 'Processing', 'Please deliver during weekdays.'),
+    (3, 234000000, '456 Nguyen Hue Street, Ho Chi Minh City', 'codewithdt', '+84 79 6428 094', 'Shipped', 'Delivery expected by end of week.'),
+    (5, 117000000, '789 Tran Hung Dao Avenue, Da Nang', 'codewithdt', '+84 79 6428 094', 'Processing', 'Contact recipient before delivery.'),
+    (6, 167000000, '567 Le Loi Boulevard, Hue', 'codewithdt', '+84 79 6428 094', 'Delivered', 'Left at front door.'),
+    (7, 310000000, '999 Phan Chu Trinh Street, Nha Trang', 'codewithdt', '+84 79 6428 094', 'Processing', 'Handle with care.'),
+    (5, 350000000, '888 Nguyen Trai Road, Can Tho', 'codewithdt', '+84 79 6428 094', 'Shipped', 'Delivery instructions included.'),
+    (6, 270000000, '222 Ly Thai To Street, Hai Phong', 'codewithdt', '+84 79 6428 094', 'Processing', 'Contact recipient.'),
+    (5, 68000000, '333 Vo Van Tan Street, Vung Tau', 'codewithdt', '+84 79 6428 094', 'Delivered', 'Signed by recipient.'),
+    (6, 66000000, '444 Nguyen Dinh Chieu Road, Quy Nhon', 'codewithdt', '+84 79 6428 094', 'Processing', 'Call before delivery.'),
+    (6, 116000000, '555 Tran Phu Street, Phu Quoc', 'codewithdt', '+84 79 6428 094', 'Shipped', 'Handle with care.'),
+    (5, 85000000, '666 Dien Bien Phu Street, Buon Ma Thuot', 'codewithdt', '+84 79 6428 094', 'Processing', 'Call recipient on delivery.'),
+    (2, 95000000, '777 Nguyen Van Linh Street, Can Gio', 'codewithdt', '+84 79 6428 094', 'Delivered', 'Left at gate.'),
+    (5, 107000000, '111 Vo Thi Sau Avenue, Vung Tau', 'codewithdt', '+84 79 6428 094', 'Processing', 'Delivery expected today.'),
+    (6, 61000000, '222 Ton Duc Thang Road, Ha Long', 'codewithdt', '+84 79 6428 094', 'Shipped', 'Contact recipient.'),
+    (7, 150000000, '333 Le Duan Street, Rach Gia', 'codewithdt', '+84 79 6428 094', 'Processing', 'Leave at front desk.'),
+    (2, 170000000, '444 Tran Quoc Toan Boulevard, Tam Ky', 'codewithdt', '+84 79 6428 094', 'Delivered', 'Signed by security.'),
+    (5, 115000000, '555 Truong Sa Street, Con Dao', 'codewithdt', '+84 79 6428 094', 'Processing', 'Handle with care.'),
+    (6, 27000000, '666 Nguyen Trai Avenue, Soc Trang', 'codewithdt', '+84 79 6428 094', 'Shipped', 'Delivery instructions included.'),
+    (7, 8000000, '777 Tran Hung Dao Street, Long Xuyen', 'codewithdt', '+84 79 6428 094', 'Processing', 'Call recipient.'),
+    (5, 24000000, '888 Ly Thuong Kiet Road, Dong Hoi', 'codewithdt', '+84 79 6428 094', 'Delivered', 'Left at front door.');
 GO
 
 -- Insert 40 order details
