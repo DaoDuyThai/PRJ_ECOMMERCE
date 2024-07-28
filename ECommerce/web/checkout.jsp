@@ -64,10 +64,10 @@
                                     <h3 class="title">Billing</h3>
                                 </div>
                                 <div class="form-group">
-                                    <input class="input" type="text" name="fullname" placeholder="Full Name" required>
+                                    <input class="input" type="text" name="fullname" placeholder="Full Name" value="${account.fullname}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="input" type="email" name="email" placeholder="Email" required>
+                                    <input class="input" type="email" name="email" placeholder="Email" value="${account.email}" required>
                                 </div>
 
                                 <div class="form-group">
@@ -168,13 +168,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="input-checkbox">
+<!--                            <div class="input-checkbox">
                                 <input type="checkbox" id="terms">
                                 <label for="terms">
                                     <span></span>
                                     I've read and accept the <a href="#">terms & conditions</a>
                                 </label>
-                            </div> 
+                            </div> -->
                                 <button style="width: 100%" type="submit" class="primary-btn order-submit">Place order</button>
                         </div>
                         <!-- /Order Details -->
