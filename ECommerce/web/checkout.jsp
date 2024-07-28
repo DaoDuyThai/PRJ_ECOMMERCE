@@ -89,7 +89,7 @@
 
                             <!-- Order notes -->
                             <div class="order-notes">
-                                <textarea class="input" placeholder="Order Notes"></textarea>
+                                <textarea class="input" name="note" placeholder="Order Notes"></textarea>
                             </div>
                             <!-- /Order notes -->
                         </div>
