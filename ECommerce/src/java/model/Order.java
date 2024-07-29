@@ -35,6 +35,16 @@ public class Order {
         this.date_created = date_created;
     }
 
+    public Order(int account_id, long total_price, String delivery_address, String receiver_name, String receiver_phone, String status, String note) {
+        this.account_id = account_id;
+        this.total_price = total_price;
+        this.delivery_address = delivery_address;
+        this.receiver_name = receiver_name;
+        this.receiver_phone = receiver_phone;
+        this.status = status;
+        this.note = note;
+    }
+
     public int getId() {
         return id;
     }

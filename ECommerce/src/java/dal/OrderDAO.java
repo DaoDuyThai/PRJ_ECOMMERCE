@@ -4,10 +4,7 @@
  */
 package dal;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import model.Order;
@@ -48,11 +45,34 @@ public class OrderDAO {
         return list;
     }
 
+    public int saveOrder(Order order) {
+        String sql = "INSERT INTO Orders (account_id, total_price, delivery_address, receiver_name, receiver_phone, [status], note)\n"
+                + "VALUES (\n"
+                + order.getAccount_id() + ", "
+                + order.getTotal_price() + ", "
+                + "'" + order.getDelivery_address() + "', "
+                + "'" + order.getReceiver_name() + "', "
+                + "'" + order.getReceiver_phone()+ "', "
+                + "'Processing', \n"
+                + "'" + order.getNote()+ "'"
+                + ");";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1); // Return generated order ID
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         OrderDAO dao = new OrderDAO();
-        List<Order> list = dao.getAllOrders();
-        for (Order p : list) {
-            System.out.println(p.toString());
-        }
+        Order order = new Order(1, 10000000L,  "delivery_address", "receiver_name", "receiver_phone", "status", "note");
+        System.out.println(""+ dao.saveOrder(order));
     }
 }
