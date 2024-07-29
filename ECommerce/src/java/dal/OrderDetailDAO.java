@@ -68,5 +68,10 @@ public class OrderDetailDAO {
     public static void main(String[] args) {
         OrderDetailDAO dao = new OrderDetailDAO();
         OrderDetail o = new OrderDetail();
+        o.setOrder_id(25);
+        o.setQuantity(2);
+        o.setProduct_id(1);
+        o.setPrice(60000000);
+        System.out.println(dao.saveOrderDetail(o));
     }
 }

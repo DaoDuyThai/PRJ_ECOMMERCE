@@ -54,7 +54,7 @@
         <div class="section">
             <!-- container -->
             <div class="container">
-                <form action="checkout" method="post">
+                <form action="saveorder" method="post">
                     <!-- row -->
                     <div class="row">
                         <div class="col-md-7">
