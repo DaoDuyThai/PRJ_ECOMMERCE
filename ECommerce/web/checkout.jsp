@@ -168,14 +168,17 @@
                                     </div>
                                 </div>
                             </div>
-<!--                            <div class="input-checkbox">
-                                <input type="checkbox" id="terms">
-                                <label for="terms">
-                                    <span></span>
-                                    I've read and accept the <a href="#">terms & conditions</a>
-                                </label>
-                            </div> -->
-                                <button style="width: 100%" type="submit" class="primary-btn order-submit">Place order</button>
+                            <!--                            <div class="input-checkbox">
+                                                            <input type="checkbox" id="terms">
+                                                            <label for="terms">
+                                                                <span></span>
+                                                                I've read and accept the <a href="#">terms & conditions</a>
+                                                            </label>
+                                                        </div> -->
+                            <div class="error-message">
+                                <b style="color: red">${errorMessage}</b>
+                            </div>
+                            <button style="width: 100%" type="submit" class="primary-btn order-submit">Place order</button>
                         </div>
                         <!-- /Order Details -->
                     </div>

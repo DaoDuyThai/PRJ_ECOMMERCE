@@ -6,6 +6,7 @@ package controller;
 
 import dal.OrderDAO;
 import dal.OrderDetailDAO;
+import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -94,31 +95,58 @@ public class SaveOrderController extends HttpServlet {
         String address = request.getParameter("address");
         String note = request.getParameter("note");
 
-        // Read cart items from cookies
+        // Retrieve the cart from cookies
         Cookie[] cookies = request.getCookies();
-        List<OrderDetail> orderDetails = new ArrayList<>();
-        long totalPrice = 0;
-
+        String cart = "";
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().startsWith("cart_")) {
-                    String[] cartItem = cookie.getValue().split("_");
-                    int productId = Integer.parseInt(cartItem[0]);
-                    int quantity = Integer.parseInt(cartItem[1]);
-                    long price = Long.parseLong(cartItem[2]);
-
-                    OrderDetail orderDetail = new OrderDetail();
-                    orderDetail.setProduct_id(productId);
-                    orderDetail.setQuantity(quantity);
-                    orderDetail.setPrice(price);
-
-                    orderDetails.add(orderDetail);
-                    totalPrice += quantity * price;
+                if (cookie.getName().equals("cart")) {
+                    cart = java.net.URLDecoder.decode(cookie.getValue(), "UTF-8");
+                    break;
                 }
             }
         }
+        
+        // Parse cart items
+        List<String[]> cartItems = new ArrayList<>();
+        if (!cart.isEmpty()) {
+            String[] items = cart.split(",");
+            for (String item : items) {
+                String[] parts = item.split(":");
+                String productId = parts[0];
+                String quantity = parts[1];
+                cartItems.add(new String[]{productId, quantity});
+            }
+        }else {
+            String errorMessage = "Error! Please try again later!";
+            request.setAttribute("errorMessage", errorMessage);
+            request.getRequestDispatcher("checkout").forward(request, response);
+            return;
+        }
 
-        //Create and save the order
+        // Retrieve product details and create order details
+        ProductDAO productDAO = new ProductDAO();
+        List<OrderDetail> orderDetails = new ArrayList<>();
+        long totalPrice = 0L;
+
+        for (String[] cartItem : cartItems) {
+            int productId = Integer.parseInt(cartItem[0]);
+            Object[] product = productDAO.getProductById(productId);
+            if (product != null) {
+                int quantity = Integer.parseInt(cartItem[1]);
+                long price = (long) product[4];
+
+                OrderDetail orderDetail = new OrderDetail();
+                orderDetail.setProduct_id(productId);
+                orderDetail.setQuantity(quantity);
+                orderDetail.setPrice(price);
+
+                orderDetails.add(orderDetail);
+                totalPrice += quantity * price;
+            }
+        }
+
+        // Create and save the order
         Order order = new Order();
         order.setAccount_id(((Account) account).getId());
         order.setTotal_price(totalPrice);
@@ -128,6 +156,8 @@ public class SaveOrderController extends HttpServlet {
         order.setNote(note);
         OrderDAO orderDAO = new OrderDAO();
         int orderId = orderDAO.saveOrder(order);
+
+        // Save order details
         OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
         for (OrderDetail detail : orderDetails) {
             detail.setOrder_id(orderId);
@@ -136,13 +166,13 @@ public class SaveOrderController extends HttpServlet {
 
         // Clear cart cookies
         for (Cookie cookie : cookies) {
-            if (cookie.getName().startsWith("cart_")) {
+            if (cookie.getName().equals("cart")) {
                 cookie.setMaxAge(0);
                 response.addCookie(cookie);
             }
         }
-        response.sendRedirect("checkoutsuccessfully.jsp");
 
+        response.sendRedirect("checkoutsuccessfully.jsp");
     }
 
     /**
