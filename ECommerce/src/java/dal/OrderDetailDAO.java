@@ -8,8 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import model.Order;
 import model.OrderDetail;
 
 /**
@@ -44,11 +46,27 @@ public class OrderDetailDAO {
         return list;
     }
 
+    public String saveOrderDetail(OrderDetail orderDetail) {
+        String sql = "INSERT INTO Order_details (product_id, order_id, quantity, price)\n"
+                + "VALUES(\n"
+                + orderDetail.getProduct_id() + ", \n"
+                + orderDetail.getOrder_id() + ", \n"
+                + orderDetail.getQuantity() + ", \n"
+                + orderDetail.getPrice() + " \n"
+                + ");";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+            return "Database error!";
+        }
+        return "";
+    }
+
     public static void main(String[] args) {
         OrderDetailDAO dao = new OrderDetailDAO();
-        List<OrderDetail> list = dao.getAllOrderDetails();
-        for (OrderDetail p : list) {
-            System.out.println(p.toString());
-        }
+        OrderDetail o = new OrderDetail();
     }
 }
