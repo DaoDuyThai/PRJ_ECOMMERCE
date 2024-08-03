@@ -73,6 +73,7 @@ public class CheckoutController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        
 
         Object account = session.getAttribute("account");
         if (account == null) {
