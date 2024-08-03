@@ -79,7 +79,6 @@ public class CheckoutController extends HttpServlet {
             response.sendRedirect("login");
             return;
         }
-        
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }
 
