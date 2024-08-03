@@ -74,7 +74,6 @@ public class CheckoutController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         
-
         Object account = session.getAttribute("account");
         if (account == null) {
             response.sendRedirect("login");
